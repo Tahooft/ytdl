@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 import youtube_dl
 
-
 url = 'https://www.youtube.com/watch?v=wZnVQT_iEYo'
 
 
@@ -22,14 +21,16 @@ def my_hook(d):
 
 
 ytdl_opts = {
-    'format': 'bestaudio/best',
+    'format': 'bestvideo/best',
     'postprocessors': [{
-        'key': 'FFmpegExtractAudio',
-        'preferredcodec': 'mp3',
-        'preferredquality': '192',
+        'key': 'FFmpegVideoConvertor',
+        'preferedformat': 'mp4',            # avi/flv/mkv/mp4/ogg/webm
     }],
+    'outtmpl': '~/Downloads/%(title)s.%(ext)s',
     'logger': MyLogger(),
     'progress_hooks': [my_hook],
 }
+
+
 with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
     ytdl.download([url])

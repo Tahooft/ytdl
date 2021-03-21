@@ -31,5 +31,5 @@ ytdl_opts = {
     'logger': MyLogger(),
     'progress_hooks': [my_hook],
 }
-with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
-    ytdl.download([url])
+with youtube_dl.YoutubeDL(ytdl_opts) as ydl:
+    ydl.download([url])
