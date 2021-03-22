@@ -3,14 +3,15 @@ import youtube_dl
 
 
 url = 'https://www.youtube.com/watch?v=wZnVQT_iEYo'
-
+url = ''
 
 class MyLogger(object):
+
     def debug(self, msg):
         pass
 
     def warning(self, msg):
-        pass
+        print(msg)
 
     def error(self, msg):
         print(msg)
@@ -33,5 +34,11 @@ ytdl_opts = {
 }
 
 
-with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
-    ytdl.download([url])
+def download(ytdl_opts, url):
+    with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
+        ytdl.download([url])
+
+
+# Test
+if __name__ == "__main__":
+    download(ytdl_opts, url)
