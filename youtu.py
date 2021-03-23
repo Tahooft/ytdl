@@ -19,6 +19,7 @@ class MyLogger(object):
 
 def my_hook(d):
     if d['status'] == 'finished':
+        print(f'Url {url} started...')
         print('Done downloading, now converting ...')
 
 
@@ -34,11 +35,11 @@ ytdl_opts = {
 }
 
 
-def download(ytdl_opts, url):
+def downloader(ytdl_opts, url):
     with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
         ytdl.download([url])
 
 
 # Test
 if __name__ == "__main__":
-    download(ytdl_opts, url)
+    downloader(ytdl_opts, url)
