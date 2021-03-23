@@ -1,26 +1,39 @@
+# 1. Define a subclass using threading.Thread class.
+# 2. Instantiate the subclass and trigger the thread.
+
 import threading
-import time
-import youtu
-
-start = time.perf_counter()
+import datetime
 
 
-urls = [
-    'https://www.youtube.com/watch?v=nTasT5h0LEg',
-    'https://www.youtube.com/watch?v=7Ht9jkWXqlU',
-    'https://www.youtube.com/watch?v=84U5NlBOD64',
-]
+class myThread (threading.Thread):
+
+    def __init__(self, name, counter):
+        threading.Thread.__init__(self)
+        self.threadID = counter
+        self.name = name
+        self.counter = counter
+
+    def run(self):
+        print("\nStarting " + self.name)
+        print_date(self.name, self.counter)
+        print("Exiting " + self.name)
 
 
-threads = []
+def print_date(threadName, counter):
+    datefields = []
+    today = datetime.date.today()
+    datefields.append(today)
+    print("{}[{}]: {}".format(threadName, counter, datefields[0]))
 
-for url in urls:
-    t = threading.Thread(target=youtu.downloader, args=[youtu.ytdl_opts, url])
-    t.start()
-    threads.append(t)
 
-for thread in threads:
-    thread.join()
+# Create new threads
+thread1 = myThread("Thread", 1)
+thread2 = myThread("Thread", 2)
 
-finish = time.perf_counter()
-print(f'Finished in {round(finish-start, 2)} second(s)')
+# Start new Threads
+thread1.start()
+thread2.start()
+
+thread1.join()
+thread2.join()
+print("\nExiting the Program!!!")

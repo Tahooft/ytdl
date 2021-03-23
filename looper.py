@@ -1,10 +1,10 @@
 import time
 import pyperclip as clipboard
 from regulars import isValidURL
-import youtu
+import downloader as dl
 
 
-def deloop():
+def looper():
     latest = ''
     clipped = 'go'
 
@@ -18,7 +18,7 @@ def deloop():
 
             if isValidURL(clipped):
                 print('Valid url')
-                youtu.download(youtu.ytdl_opts, clipped)
+                dl.downloader(dl.ytdl_opts, clipped)
 
         print('\nclipped:', clipped, '\n')
 
@@ -27,7 +27,7 @@ def deloop():
 
 # Test
 if __name__ == "__main__":
-    deloop()
+    looper()
 
 # # copying text to clipboard
 # clipboard.copy(text1)

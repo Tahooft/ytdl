@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 import youtube_dl
 
-url = 'https://www.youtube.com/watch?v=wZnVQT_iEYo'
 url = ''
 
 
@@ -41,5 +40,7 @@ def downloader(ytdl_opts, url):
 
 
 # Test
+url = 'https://www.youtube.com/watch?v=wZnVQT_iEYo'
+
 if __name__ == "__main__":
     downloader(ytdl_opts, url)
