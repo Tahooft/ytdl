@@ -6,21 +6,19 @@ import downloader as dl
 
 def looper():
     latest = ''
-    clipped = 'go'
+    clipboard.copy('go')
 
-    while clipped != 'Stop':
+    while clipboard.paste() != 'Stop':
 
-        clipped = clipboard.paste()
-
-        if clipped != latest:
-            latest = clipped
+        if clipboard.paste() != latest:
             print('Changed!')
+            latest = clipboard.paste()
 
-            if isValidURL(clipped):
+            if isValidURL(latest):
                 print('Valid url')
-                dl.downloader(dl.ytdl_opts, clipped)
+                dl.downloader(dl.ytdl_opts, latest)
 
-        print('\nclipped:', clipped, '\n')
+        print('\nclipped:', latest, '\n')
 
         time.sleep(5)
 
@@ -28,8 +26,3 @@ def looper():
 # Test
 if __name__ == "__main__":
     looper()
-
-# # copying text to clipboard
-# clipboard.copy(text1)
-# # pasting the text from clipboard
-# text2 = clipboard.paste()
