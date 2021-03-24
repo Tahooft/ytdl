@@ -1,4 +1,5 @@
 import re
+import logger as log
 
 
 def isValidURL(str):
@@ -24,10 +25,12 @@ def isValidURL(str):
     return True if (re.search(p, str)) else False
 
 
-# # Test Case 1:
-# url = "https://www.geeksforgeeks.org"
+# Test
+if __name__ == "__main__":
 
-# if(isValidURL(url) is True):
-#     print("Yes")
-# else:
-#     print("No")
+    url = "https://www.geeksforgeeks.org"
+
+    if(isValidURL(url) is True):
+        log.logger.info('Yes')
+    else:
+        log.logger.debug('no')
