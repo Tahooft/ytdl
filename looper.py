@@ -1,4 +1,4 @@
-import logger as log
+import logger
 import time
 import pyperclip as clipboard
 from regulars import isValidURL
@@ -13,14 +13,14 @@ def looper():
 
         if clipboard.paste() != latest:
             latest = clipboard.paste()
-            log.logger.info('Latest clipboard item')
-            log.logger.info('clipped: {}'.format(latest))
+            logger.log.info('Latest clipboard item')
+            logger.log.info('clipped: {}'.format(latest))
 
             if isValidURL(latest):
-                log.logger.info('Valid url')
+                logger.log.info('Valid url')
                 dl.downloader(dl.ytdl_opts, latest)
             else:
-                log.logger.debug('Not a valid url')
+                logger.log.debug('Not a valid url')
 
         time.sleep(5)
 
