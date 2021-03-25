@@ -1,5 +1,9 @@
 import re
-import logger
+import logging
+import logging.config
+
+logging.config.fileConfig(fname='log.conf')
+logger = logging.getLogger('dev')
 
 
 def isValidURL(str):
@@ -31,6 +35,6 @@ if __name__ == "__main__":
     url = "https://www.geeksforgeeks.org"
 
     if(isValidURL(url) is True):
-        logger.log.info('Yes')
+        logger.info('Yes')
     else:
-        logger.log.info('no')
+        logger.info('no')

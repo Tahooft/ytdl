@@ -1,8 +1,8 @@
 import logging
 
 
-log = logging.getLogger(__name__)
-log.setLevel(logging.DEBUG)
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 
 basicformat = '%(levelname)s:%(name)s:%(message)s'
 format = '%(asctime)s:' + basicformat
@@ -17,17 +17,17 @@ file_handler = logging.FileHandler('logs/test.log')
 file_handler.setLevel(logging.WARNING)
 file_handler.setFormatter(formatter)
 
-log.addHandler(file_handler)
-log.addHandler(stream_handler)
+logger.addHandler(file_handler)
+logger.addHandler(stream_handler)
 
 # Test
 if __name__ == "__main__":
 
-    log.debug(' log debug message')
-    log.info(' log info message')
-    log.warning(' log warning message')
-    log.error(' log error message')
-    log.critical(' log critical message')
+    logger.debug(' logger debug message')
+    logger.info(' logger info message')
+    logger.warning(' logger warning message')
+    logger.error(' logger error message')
+    logger.critical(' logger critical message')
 
 
 # # For possible use
