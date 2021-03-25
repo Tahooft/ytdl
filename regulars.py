@@ -33,4 +33,4 @@ if __name__ == "__main__":
     if(isValidURL(url) is True):
         logger.log.info('Yes')
     else:
-        logger.log.debug('no')
+        logger.log.info('no')
