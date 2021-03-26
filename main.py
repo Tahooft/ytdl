@@ -1,19 +1,20 @@
 import time
 import pyperclip as clipboard
 from regulars import isValidURL
-import downloader as dl
+import threader as thr
 import logging.config
 import yaml
 
 with open('./log.yaml', 'r') as stream:
     config = yaml.load(stream, Loader=yaml.FullLoader)
 logging.config.dictConfig(config)
-logger = logging.getLogger('looper')
+logger = logging.getLogger('main')
 
 
-def looper():
+def main():
     latest = 'go'
     clipboard.copy('go')
+    urls = []
 
     while clipboard.paste() != 'Stop':
 
@@ -24,13 +25,13 @@ def looper():
 
             if isValidURL(latest):
                 logger.info('Valid url')
-                dl.downloader(dl.ytdl_opts, latest)
+                thr.threader(latest, urls)
             else:
-                logger.debug('Not a valid url')
+                logger.info('Not a valid url')
 
         time.sleep(5)
 
 
 # Test
 if __name__ == "__main__":
-    looper()
+    main()
