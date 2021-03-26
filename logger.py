@@ -5,7 +5,7 @@ with open('./log.yaml', 'r') as stream:
     config = yaml.load(stream, Loader=yaml.FullLoader)
 
 logging.config.dictConfig(config)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('tester')
 
 
 # Test
@@ -19,8 +19,5 @@ if __name__ == "__main__":
 
 
 # # For possible use
-# format = "%(levelname)s:%(name)s:%(asctime)s: %(message)s"
-
-# format = "%(asctime)s: %(message)s"
-# logging.basicConfig(format=format, level=logging.INFO,
-#                 datefmt="%H:%M:%S")
+# format: "%(asctime)s; %(levelname)-8s; [%(process)d]; %(name)-35s;
+#      %(funcName)-20s;%(lineno)-4d: %(message)s"
