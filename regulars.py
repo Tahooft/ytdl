@@ -37,6 +37,6 @@ if __name__ == "__main__":
     url = "https://www.geeksforgeeks.org"
 
     if(isValidURL(url) is True):
-        logger.info('Yes')
+        logger.warning('Yes')
     else:
         logger.info('no')

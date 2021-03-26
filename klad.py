@@ -1,23 +1,29 @@
-import logging
 import threading
-import time
+import downloader as dl
+import logging.config
+import yaml
+
+with open('./log.yaml', 'r') as stream:
+    config = yaml.load(stream, Loader=yaml.FullLoader)
+logging.config.dictConfig(config)
+logger = logging.getLogger('klad')
 
 
-def thread_function(name):
-    logging.info("Thread %s: starting", name)
-    time.sleep(2)
-    logging.info("Thread %s: finishing", name)
+def threader():
+    urls = [
+        'https://www.youtube.com/watch?v=nTasT5h0LEg',
+        'https://www.youtube.com/watch?v=7Ht9jkWXqlU',
+        'https://www.youtube.com/watch?v=84U5NlBOD64',
+    ]
+
+    while len(urls) > 0:
+        url = urls.pop()
+        print(len(urls), url)
+
+        t = threading.Thread(target=dl.downloader, args=[dl.ytdl_opts, url])
+        t.start()
 
 
+# Test
 if __name__ == "__main__":
-    format = "%(asctime)s: %(message)s"
-    logging.basicConfig(format=format, level=logging.INFO,
-                        datefmt="%H:%M:%S")
-
-    logging.info("Main    : before creating thread")
-    x = threading.Thread(target=thread_function, args=(1,))
-    logging.info("Main    : before running thread")
-    x.start()
-    logging.info("Main    : wait for the thread to finish")
-    # x.join()
-    logging.info("Main    : all done")
+    threader()
