@@ -1,19 +1,14 @@
 from __future__ import unicode_literals
 import youtube_dl
+import logging.config
+import yaml
+
+with open('./log.yaml', 'r') as stream:
+    config = yaml.load(stream, Loader=yaml.FullLoader)
+logging.config.dictConfig(config)
+logger = logging.getLogger('downloader')
 
 url = 'url init'
-
-
-class MyLogger(object):
-
-    def debug(self, msg):
-        pass
-
-    def warning(self, msg):
-        print(msg)
-
-    def error(self, msg):
-        print(msg)
 
 
 def my_hook(d):
@@ -29,7 +24,7 @@ ytdl_opts = {
         'preferedformat': 'mp4',            # avi/flv/mkv/mp4/ogg/webm
     }],
     'outtmpl': '~/Downloads/%(title)s.%(ext)s',
-    'logger': MyLogger(),
+    'logger': logger,
     'progress_hooks': [my_hook],
 }
 
