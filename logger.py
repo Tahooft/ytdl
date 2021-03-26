@@ -1,24 +1,12 @@
-import logging
+import logging.config
+import yaml
 
+with open('./log.yaml', 'r') as stream:
+    config = yaml.load(stream, Loader=yaml.FullLoader)
 
+logging.config.dictConfig(config)
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
 
-basicformat = '%(levelname)s:%(name)s:%(message)s'
-format = '%(asctime)s:' + basicformat
-
-formatter = logging.Formatter(basicformat)
-stream_handler = logging.StreamHandler()
-stream_handler.setLevel(logging.DEBUG)
-stream_handler.setFormatter(formatter)
-
-formatter = logging.Formatter(format)
-file_handler = logging.FileHandler('logs/test.log')
-file_handler.setLevel(logging.WARNING)
-file_handler.setFormatter(formatter)
-
-logger.addHandler(file_handler)
-logger.addHandler(stream_handler)
 
 # Test
 if __name__ == "__main__":
