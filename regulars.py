@@ -1,9 +1,11 @@
 import re
-import logging
 import logging.config
+import yaml
 
-logging.config.fileConfig(fname='log.conf')
-logger = logging.getLogger('dev')
+with open('./log.yaml', 'r') as stream:
+    config = yaml.load(stream, Loader=yaml.FullLoader)
+logging.config.dictConfig(config)
+logger = logging.getLogger('regulars')
 
 
 def isValidURL(str):

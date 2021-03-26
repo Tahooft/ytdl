@@ -1,6 +1,13 @@
 import threading
 import time
 import downloader as dl
+import logging.config
+import yaml
+
+with open('./log.yaml', 'r') as stream:
+    config = yaml.load(stream, Loader=yaml.FullLoader)
+logging.config.dictConfig(config)
+logger = logging.getLogger('thread_them')
 
 start = time.perf_counter()
 
@@ -23,4 +30,4 @@ for thread in threads:
     thread.join()
 
 finish = time.perf_counter()
-print(f'Finished in {round(finish-start, 2)} second(s)')
+logger.debug(f'Finished in {round(finish-start, 2)} second(s)')

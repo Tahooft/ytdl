@@ -3,7 +3,6 @@ import yaml
 
 with open('./log.yaml', 'r') as stream:
     config = yaml.load(stream, Loader=yaml.FullLoader)
-
 logging.config.dictConfig(config)
 logger = logging.getLogger('tester')
 
