@@ -11,13 +11,13 @@ logger = logging.getLogger('threader')
 
 def threader(url, urls):
 
-    logger.debug('A new url {} '.format(url))
+    logger.info('A new url {} '.format(url))
     urls.append(url)
 
     while len(urls) > 0:
         url = urls.pop()
         print(len(urls), url)
-        logger.debug('url added: {}'.format(url))
+        logger.info('url added: {}'.format(url))
 
         t = threading.Thread(target=dl.downloader, args=[dl.ytdl_opts, url])
         t.start()
