@@ -57,6 +57,7 @@ if __name__ == "__main__":
     # 'writesubtitles': True,
     # 'writeautomaticsub': True,
     # 'subtitleslangs': 'en',
+    # 'no_warnings': True,
 # # No need?
     # 'postprocessors': [{
     #     'key': 'FFmpegVideoConvertor',

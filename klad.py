@@ -1,29 +1,32 @@
-import threading
-import downloader as dl
-import logging.config
-import yaml
-
-with open('./log.yaml', 'r') as stream:
-    config = yaml.load(stream, Loader=yaml.FullLoader)
-logging.config.dictConfig(config)
-logger = logging.getLogger('klad')
+import logging
+import subprocess
+import sys
 
 
-def threader():
-    urls = [
-        'https://www.youtube.com/watch?v=nTasT5h0LEg',
-        'https://www.youtube.com/watch?v=7Ht9jkWXqlU',
-        'https://www.youtube.com/watch?v=84U5NlBOD64',
-    ]
-
-    while len(urls) > 0:
-        url = urls.pop()
-        print(len(urls), url)
-
-        t = threading.Thread(target=dl.downloader, args=[dl.ytdl_opts, url])
-        t.start()
+class TTSHandler(logging.Handler):
+    def emit(self, record):
+        msg = self.format(record)
+        # Speak slowly in a female English voice
+        cmd = ['espeak', '-s150', '-ven+f3', msg]
+        p = subprocess.Popen(cmd, stdout=subprocess.PIPE,
+                             stderr=subprocess.STDOUT)
+        # wait for the program to finish
+        p.communicate()
 
 
-# Test
-if __name__ == "__main__":
-    threader()
+def configure_logging():
+    h = TTSHandler()
+    root = logging.getLogger()
+    root.addHandler(h)
+    # the default formatter just returns the message
+    root.setLevel(logging.DEBUG)
+
+
+def main():
+    logging.info('Hello')
+    logging.debug('Wel done')
+
+
+if __name__ == '__main__':
+    configure_logging()
+    sys.exit(main())
