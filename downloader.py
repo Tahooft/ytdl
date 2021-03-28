@@ -16,20 +16,21 @@ def my_hook(d):
         logger.error('Error while downloading')
     elif d['status'] == 'downloading':
         # logger.info(f'Url {url} downloading')
-        # p = d['_percent_str']
-        # logger.info('Downloaded so far: {}'.format(p))
+        p = d['_percent_str']
+        logger.info('Downloaded so far: {}'.format(p))
         # f = d['filename']
         # logger.debug(f'Filename: {f}')
         # e = d['_eta_str']
         # logger.debug(f'Estimated time left: {e}')
         pass
     elif d['status'] == 'finished':
-        logger.info(f'Done downloading {url}')
+        logger.info('Status finished: {}'.format(url))
 
 
 ytdl_opts = {
     'simulate': False,
     'quiet': True,
+    'no_warnings': True,
     'format': 'bestvideo+bestaudio/best',
     'outtmpl': '~/Downloads/%(title)s.%(ext)s',
     'logger': logger,
@@ -41,10 +42,12 @@ def downloader(ytdl_opts, url):
     with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
         ytdl.download([url])
 
+    logger.info('Download done: {}'.format(url))
+
 
 # Test
 if __name__ == "__main__":
-    url = 'https://www.youtube.com/watch?v=wZnVQT_iEYo'
+    # url = 'https://www.youtube.com/watch?v=wZnVQT_iEYo'
     url = 'https://www.youtube.com/watch?v=nTasT5h0LEg'
 
     downloader(ytdl_opts, url)
