@@ -20,7 +20,7 @@ def looper():
         if clipboard.paste() != latest:
             latest = clipboard.paste()
             logger.info('Latest clipboard item')
-            logger.info('clipped: {}'.format(latest))
+            logger.info(f'clipped: {latest}')
 
             if isValidURL(latest):
                 logger.info('Valid url')

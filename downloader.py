@@ -17,14 +17,14 @@ def my_hook(d):
     elif d['status'] == 'downloading':
         # logger.info(f'Url {url} downloading')
         p = d['_percent_str']
-        logger.info('Downloaded so far: {}'.format(p))
+        logger.info(f'Downloaded so far: {p}')
         # f = d['filename']
         # logger.debug(f'Filename: {f}')
         # e = d['_eta_str']
         # logger.debug(f'Estimated time left: {e}')
         pass
     elif d['status'] == 'finished':
-        logger.info('Status finished: {}'.format(url))
+        logger.info(f'Status finished: {url}')
 
 
 ytdl_opts = {
@@ -42,7 +42,7 @@ def downloader(ytdl_opts, url):
     with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
         ytdl.download([url])
 
-    logger.info('Download done: {}'.format(url))
+    logger.info(f'Download done: {url}')
 
 
 # Test

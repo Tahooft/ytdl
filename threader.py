@@ -18,19 +18,19 @@ def threader(url, urls):
     while len(urls) > 0:
         url = urls.pop()
         total_urls = len(urls)
-        logger.info('URL added: {}'.format(url))
-        logger.info('Total urls: {}'.format(total_urls))
+        logger.info(f'URL added: {url}')
+        logger.info(f'Total urls: {total_urls}')
 
         t = threading.Thread(target=dl.downloader, args=[dl.ytdl_opts, url])
         t.start()
         thread = t.getName()
         threads.append(thread)
         total_threads = len(threads)
-        logger.info('Latest thread: {}'.format(thread))
-        logger.info('Total threads: {}'.format(total_threads))
+        logger.info(f'Latest thread: {thread}')
+        logger.info(f'Total threads: {total_threads}')
 
     t.join()
-    logger.info('Done these threads: {}\n'.format(threads))
+    logger.info(f'Done these threads: {threads}\n')
 
 
 # Test
