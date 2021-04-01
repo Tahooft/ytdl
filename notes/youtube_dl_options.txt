@@ -1,3 +1,18 @@
+
+# more ydtl_opts
+    'format': 'bestvideo[height<=480]+bestaudio/best[height<=480]',
+    'writethumbnail': True,
+    'writesubtitles': True,
+    'writeautomaticsub': True,
+    'subtitleslangs': 'en',
+    'no_warnings': True,
+# No need?
+    'postprocessors': [{
+        'key': 'FFmpegVideoConvertor',
+        'preferedformat': 'mp4',            # avi/flv/mkv/mp4/ogg/webm
+    }],
+
+
     Available options:
     username:          Username for authentication purposes.
     password:          Password for authentication purposes.
@@ -166,4 +181,4 @@
     youtube_include_dash_manifest: If True (default), DASH manifests and related
                         data will be downloaded and processed by extractor.
                         You can reduce network I/O by disabling it if you don't
-                        care about DASH. 
+                        care about DASH.

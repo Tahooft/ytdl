@@ -70,16 +70,3 @@ if __name__ == "__main__":
 
     print("Ended and all that")
     logger.info('End of test')
-
-# # more ydtl_opts
-    # 'format': 'bestvideo[height<=480]+bestaudio/best[height<=480]',
-    # 'writethumbnail': True,
-    # 'writesubtitles': True,
-    # 'writeautomaticsub': True,
-    # 'subtitleslangs': 'en',
-    # 'no_warnings': True,
-# # No need?
-    # 'postprocessors': [{
-    #     'key': 'FFmpegVideoConvertor',
-    #     'preferedformat': 'mp4',            # avi/flv/mkv/mp4/ogg/webm
-    # }],
