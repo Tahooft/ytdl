@@ -1,4 +1,12 @@
 
+    DEBUG
+    INFO
+    WARNING
+    ERROR
+    CRITICAL
+
+
+
 try:
     f = open('logs/wrning.log')
 except FileNotFoundError as e:

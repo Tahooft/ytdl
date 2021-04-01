@@ -25,12 +25,12 @@ handlers:
 
 loggers:
     clogger:
-        level: DEBUG
+        level: CRITICAL
         handlers: [console]
     flogger:
         level: DEBUG
         handlers: [file]
 
 root:
-    level: DEBUG
+    level: WARNING
     handlers: [console, file]

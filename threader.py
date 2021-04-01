@@ -36,11 +36,11 @@ def threader(url, urls):
 # Test
 if __name__ == "__main__":
     urls = [
-        'https://www.youtube.com/watch?v=nTasT5h0LEg',
+        'https://www.youtube.com/watch?v=SV6M0MxPGM0',
         'https://www.youtube.com/watch?v=7Ht9jkWXqlU',
         'https://www.youtube.com/watch?v=84U5NlBOD64',
     ]
     # urls = []
-    url = 'https://www.youtube.com/watch?v=ya6yw7RPjGg'
+    url = 'https://www.youtube.com/watch?v=qVpWpfD27mM'
 
     threader(url, urls)

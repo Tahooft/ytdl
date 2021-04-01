@@ -1,4 +1,6 @@
-from concurrent.futures import ThreadPoolExecutor, wait, as_completed
+from concurrent.futures import ThreadPoolExecutor, as_completed
+# from concurrent.futures import ThreadPoolExecutor, wait
+
 from time import sleep
 from random import randint
 from timeit import timeit as timeit
