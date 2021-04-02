@@ -20,10 +20,12 @@ URLS = ['https://www.youtube.com/watch?v=nTasT5h0LEg',
 
 # We can use a with statement to ensure threads are cleaned up promptly
 with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+
     # Start the load operations and mark each future with its URL
-    future_to_url = {executor.submit(dl.downloader, dl.ytdl_opts, url): url for url in URLS}
-    for future in concurrent.futures.as_completed(future_to_url):
-        url = future_to_url[future]
+    download = {executor.submit(dl.downloader, dl.ytdl_opts, url): url for url in URLS}
+
+    for future in concurrent.futures.as_completed(download):
+        url = download[future]
         try:
             data = future.result()
         except Exception as exc:
@@ -32,5 +34,3 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
         else:
             print('%r has %s' % (url, data))
             logger.info('Downloader %r returns: %s' % (url, data))
-
-        wait()

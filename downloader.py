@@ -26,8 +26,9 @@ def my_hook(d):
         logger.debug(f'Estimated time left: {e}')
         pass
     elif d['status'] == 'finished':
-        logger.info(f'Status finished: {url}')
-        print(f'my_hook finished says: download of {url} finished')
+        f = d['filename']
+        logger.info(f'\n<my_hook> Status finished: {url} {f}\n')
+        print(f'\n<my_hook> download of {url} {f} finished\n')
 
 
 ytdl_opts = {
@@ -53,11 +54,15 @@ def downloader(ytdl_opts, url):
             logger.error(f'\nOther error at: {url}')
             logger.debug(f'Youtube_dl error:\n {e}')
         else:
-            logger.info(f'Download started: {url}')
+            logger.info(f'started downloading : {url}')
+            result = f'started downloading {url}'
+            return result
         finally:
-            logger.info(f'Downloader finaly done: {url}')
+            logger.info(f'Downloader busy: {url}')
+            result = f'Download busy: {url}'
+            return result
 
-    return 'started downloading'
+    return result
 
 
 # Test
