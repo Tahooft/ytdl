@@ -26,4 +26,3 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
             print('%r generated an exception: %s' % (url, exc))
         else:
             print('%r page is %d bytes' % (url, len(data)))
-

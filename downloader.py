@@ -53,11 +53,11 @@ def downloader(ytdl_opts, url):
             logger.error(f'\nOther error at: {url}')
             logger.debug(f'Youtube_dl error:\n {e}')
         else:
-            logger.info(f'Download done: {url}')
+            logger.info(f'Download started: {url}')
         finally:
             logger.info(f'Downloader finaly done: {url}')
 
-    return True
+    return 'started downloading'
 
 
 # Test
