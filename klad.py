@@ -19,7 +19,7 @@ def download_all(URLS):
 
     with ThreadPoolExecutor(max_workers=3) as executor:
         for url in URLS:
-            futures = executor.submit(dl.downloader, dl.ytdl_opts, url)
+            futures = executor.submit(dl.downloader, dl.ydl_opts, url)
             futures_list.append(futures)
 
         for future in futures_list:

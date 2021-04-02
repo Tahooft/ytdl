@@ -31,7 +31,7 @@ def my_hook(d):
         print(f'\n<my_hook> download of {url} {f} finished\n')
 
 
-ytdl_opts = {
+ydl_opts = {
     'simulate': False,
     'quiet': False,
     'verbose': False,
@@ -43,10 +43,10 @@ ytdl_opts = {
 }
 
 
-def downloader(ytdl_opts, url):
-    with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
+def downloader(ydl_opts, url):
+    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         try:
-            ytdl.download([url])
+            ydl.download([url])
         except youtube_dl.utils.DownloadError as e:
             logger.error(f'\nYoutube_dl DownloadError at: {url}')
             logger.error(e)
@@ -71,7 +71,7 @@ if __name__ == "__main__":
     # url = 'https://www.youtube.com/watch?v=nTasT5h0LEg'   # Error test
     url = 'https://www.youtube.com/watch?v=d0FV3_i-6WU+'
 
-    downloader(ytdl_opts, url)
+    downloader(ydl_opts, url)
 
     print("Ended and all that")
     logger.info('End of test')

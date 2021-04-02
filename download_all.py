@@ -13,7 +13,7 @@ logger = logging.getLogger('klad')
 
 def download_all(URLS):
     """
-    Create a thread pool and download specified urls
+    Create a thread pool and download video's from specified urls
     """
 
     futures_list = []
@@ -21,7 +21,7 @@ def download_all(URLS):
 
     with ThreadPoolExecutor(max_workers=2) as executor:
         for url in URLS:
-            futures = executor.submit(dl.downloader, dl.ytdl_opts, url)
+            futures = executor.submit(dl.downloader, dl.ydl_opts, url)
             futures_list.append(futures)
             logger.debug(f'futures_list: {futures_list} ')
 

@@ -1,4 +1,4 @@
- 
+
 import concurrent
 import functools
 import os
@@ -18,7 +18,7 @@ video = re.compile(
 merger = re.compile(r'\[ffmpeg\] Merging formats into "(.+)"')
 
 
-class YTdlLogger(object):
+class ydlLogger(object):
     """Logger used for YoutubeDL which logs to UserBot logger."""
     def debug(self, msg: str) -> None:
         """Logs debug messages with youtube-dl tag to UserBot logger."""
@@ -48,7 +48,7 @@ class YTdlLogger(object):
 
 
 class ProgressHook():
-    """Custom hook with the event stored for YTDL."""
+    """Custom hook with the event stored for ydl."""
     def __init__(self, event, update=5):
         self.event = event
         self.downloaded = 0
@@ -186,12 +186,12 @@ async def extract_info(
             string if any occur.
     """
     ydl_opts['outtmpl'] = ydl_opts['outtmpl'].format(time=time.time_ns())
-    ytdl = youtube_dl.YoutubeDL(ydl_opts)
+    ydl = youtube_dl.YoutubeDL(ydl_opts)
 
     def downloader(url, download):
         eStr = None
         try:
-            info_dict = ytdl.extract_info(url, download=download)
+            info_dict = ydl.extract_info(url, download=download)
         except youtube_dl.utils.DownloadError as DE:
             eStr = f"`{DE}`"
         except youtube_dl.utils.ContentTooShortError:
@@ -217,7 +217,7 @@ async def extract_info(
             return eStr
 
         if download:
-            filen = ytdl.prepare_filename(info_dict)
+            filen = ydl.prepare_filename(info_dict)
             opath = downloads.pop(filen.rsplit('.', maxsplit=1)[0], filen)
             downloaded = pathlib.Path(opath)
             if not downloaded.exists():

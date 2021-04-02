@@ -24,7 +24,7 @@ def looper():
 
             if isValidURL(latest):
                 logger.info('Valid url')
-                dl.downloader(dl.ytdl_opts, latest)
+                dl.downloader(dl.ydl_opts, latest)
             else:
                 logger.debug('Not a valid url')
 

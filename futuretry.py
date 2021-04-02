@@ -22,7 +22,7 @@ URLS = ['https://www.youtube.com/watch?v=nTasT5h0LEg',
 with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
 
     # Start the load operations and mark each future with its URL
-    download = {executor.submit(dl.downloader, dl.ytdl_opts, url): url for url in URLS}
+    download = {executor.submit(dl.downloader, dl.ydl_opts, url): url for url in URLS}
 
     for future in concurrent.futures.as_completed(download):
         url = download[future]

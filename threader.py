@@ -21,7 +21,7 @@ def threader(url, urls):
         logger.info(f'URL added: {url}')
         logger.info(f'Total urls: {total_urls}')
 
-        t = threading.Thread(target=dl.downloader, args=[dl.ytdl_opts, url])
+        t = threading.Thread(target=dl.downloader, args=[dl.ydl_opts, url])
         t.start()
         thread = t.getName()
         threads.append(thread)
