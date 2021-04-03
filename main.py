@@ -1,7 +1,7 @@
 import time
 import pyperclip as clipboard
 from regulars import isValidURL
-import threader as thr
+import download_all as dal
 import logging.config
 import yaml
 
@@ -25,7 +25,7 @@ def main():
 
             if isValidURL(latest):
                 logger.info('Valid url')
-                thr.threader(latest, urls)
+                dal.download_all(latest, urls)
             else:
                 logger.info('Not a valid url')
 

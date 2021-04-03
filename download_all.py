@@ -11,23 +11,25 @@ logging.config.dictConfig(config)
 logger = logging.getLogger('klad')
 
 
-def download_all(URLS):
+def download_all(url, urls):
     """
     Create a thread pool and download video's from specified urls
     """
 
+    urls.append(url)
+
     futures_list = []
     results = []
 
-    with ThreadPoolExecutor(max_workers=2) as executor:
-        for url in URLS:
+    with ThreadPoolExecutor(max_workers=4) as executor:
+        for url in urls:
             futures = executor.submit(dl.downloader, dl.ydl_opts, url)
             futures_list.append(futures)
             logger.debug(f'futures_list: {futures_list} ')
 
         for future in futures_list:
             try:
-                result = future.result(timeout=60)
+                result = future.result(timeout=30)
                 results.append(result)
                 logger.debug(f'result: {result } ')
 
@@ -39,7 +41,9 @@ def download_all(URLS):
 
 if __name__ == "__main__":
 
-    URLS = [
+    url = 'https://www.youtube.com/watch?v=qVpWpfD27mM'
+
+    urls = [
         'https://www.youtube.com/watch?v=v2r2riGruPM',
         'https://www.youtube.com/watch?v=yvxMlQrGLkM',
         'https://www.youtube.com/watch?v=nTasT5h0LEg',
@@ -52,7 +56,7 @@ if __name__ == "__main__":
         'https://www.youtube.com/watch?v=d0FV3_i-6WU+',
     ]
 
-    results = download_all(URLS)
+    results = download_all(url, urls)
     for result in results:
         print(f'Result: {result}')
     sleep(60)

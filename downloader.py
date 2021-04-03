@@ -14,21 +14,21 @@ url = 'url init'
 def my_hook(d):
     if d['status'] == 'error':
         f = d['filename']
-        logger.error(f'Error while downloading {f}')
+        logger.error('Error while downloading %s' % f)
         raise youtube_dl.utils.DownloadError('\nDownload error raised\n')
     elif d['status'] == 'downloading':
-        logger.debug(f'Url {url} downloading')
+        logger.debug('%s downloading' % url)
         p = d['_percent_str']
-        logger.debug(f'Downloaded so far: {p}')
+        logger.debug('Downloaded so far: %s' % p)
         f = d['filename']
-        logger.debug(f'Filename: {f}')
+        logger.debug('Filename: %s' % f)
         e = d['_eta_str']
-        logger.debug(f'Estimated time left: {e}')
+        logger.debug('Estimated time left: %s' % e)
         pass
     elif d['status'] == 'finished':
         f = d['filename']
-        logger.info(f'\n<my_hook> Status finished: {url} {f}\n')
-        print(f'\n<my_hook> download of {url} {f} finished\n')
+        logger.info('\n<my_hook> Status finished: %s\n' % f)
+        print('\n<my_hook> download of %s finished\n' % f)
 
 
 ydl_opts = {
@@ -48,18 +48,18 @@ def downloader(ydl_opts, url):
         try:
             ydl.download([url])
         except youtube_dl.utils.DownloadError as e:
-            logger.error(f'\nYoutube_dl DownloadError at: {url}')
+            logger.error('\nYoutube_dl DownloadError at: %s' % url)
             logger.error(e)
         except Exception as e:
-            logger.error(f'\nOther error at: {url}')
+            logger.error('\nOther error at: %s' % url)
             logger.debug(f'Youtube_dl error:\n {e}')
         else:
-            logger.info(f'started downloading : {url}')
-            result = f'started downloading {url}'
+            logger.info('started downloading : %s' % url)
+            result = 'started downloading %s' % url
             return result
         finally:
-            logger.info(f'Downloader busy: {url}')
-            result = f'Download busy: {url}'
+            logger.info('Downloader busy: %s' % url)
+            result = 'Download busy: %s' % url
             return result
 
     return result
