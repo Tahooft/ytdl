@@ -3,3 +3,4 @@ __pycache__/
 logs/looper.log
 logs/test.log
 logs/warning.log
+log.yaml

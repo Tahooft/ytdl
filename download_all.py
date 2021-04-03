@@ -60,5 +60,8 @@ if __name__ == "__main__":
     results = download_all(url, urls)
     for result in results:
         print(f'Result: {result}')
-    sleep(60)
+        logger.info('Result: %s\n' % result)
+
     print('Done\n')
+    logger.debug('Done\n')
+    sleep(30)

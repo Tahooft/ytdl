@@ -22,8 +22,8 @@ handlers:
         formatter: fullFormatter
         level: DEBUG
         filename: logs/logging.log
-        maxBytes: 4000
-        backupCount: 0
+        maxBytes: 16000
+        backupCount: 3
 
 loggers:
     clogger:
