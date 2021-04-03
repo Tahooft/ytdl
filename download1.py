@@ -17,7 +17,7 @@ def my_hook(d):
         logger.error('Error while downloading %s' % f)
         raise youtube_dl.utils.DownloadError('\nDownload error raised\n')
     elif d['status'] == 'downloading':
-        logger.debug('%s downloading' % url)
+        logger.debug('Downloading: %s' % url)
         p = d['_percent_str']
         logger.debug('Downloaded so far: %s' % p)
         f = d['filename']
@@ -27,8 +27,8 @@ def my_hook(d):
         pass
     elif d['status'] == 'finished':
         f = d['filename']
-        logger.info('\n<my_hook> Status finished: %s' % f)
-        print('\n<my_hook> ownload of %s finished' % f)
+        logger.info('<my_hook> Status finished: %s' % f)
+        print('<my_hook> Download of %s finished' % f)
 
 
 ydl_opts = {
@@ -48,17 +48,14 @@ def download1(ydl_opts, url):
         try:
             ydl.download([url])
         except youtube_dl.utils.DownloadError as e:
-            logger.error('\nYoutube_dl DownloadError at: %s' % url)
+            logger.error('Youtube_dl DownloadError at: %s' % url)
             logger.error(e)
         except Exception as e:
             logger.error('\nOther error at: %s' % e)
         else:
-            logger.info('started downloading : %s' % url)
-            result = 'started downloading %s' % url
-            return result
-        finally:
-            logger.info('Downloader busy: %s' % url)
-            result = 'Download busy: %s' % url
+            logger.debug('Started downloading : %s' % url)
+            result = 'Started downloading %s' % url
+
             return result
 
 
@@ -73,7 +70,7 @@ if __name__ == "__main__":
 
     download1(ydl_opts, url)
 
-    print("Ended and all that now waiting 30 secs")
-    logger.info('End of test')
-    sleep(30)
+    print("Ended and all that now waiting 10 secs")
+    logger.debug('End of test')
+    sleep(10)
     print('Done')
