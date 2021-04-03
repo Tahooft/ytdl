@@ -21,7 +21,7 @@ handlers:
         class: logging.handlers.RotatingFileHandler
         formatter: fullFormatter
         level: DEBUG
-        filename: logs/logging.log
+        filename: logings/logging.log
         maxBytes: 150000
         backupCount: 3
 
