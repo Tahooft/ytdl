@@ -21,7 +21,7 @@ def main():
         if clipboard.paste() != latest:
             latest = clipboard.paste()
             logger.info('Latest clipboard item')
-            logger.info(f'clipped: {latest}')
+            logger.info('clipped: %s' % latest)
 
             if isValidURL(latest):
                 logger.info('Valid url')
