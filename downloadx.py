@@ -1,5 +1,5 @@
 from concurrent.futures import ThreadPoolExecutor
-import downloader as dl
+import download1 as dl
 import logging.config
 import yaml
 from time import sleep
@@ -11,7 +11,7 @@ logging.config.dictConfig(config)
 logger = logging.getLogger(__name__)
 
 
-def download_all(url, urls):
+def downloadx(url, urls):
     """
     Create a thread pool and download video's from specified urls
     """
@@ -23,7 +23,7 @@ def download_all(url, urls):
 
     with ThreadPoolExecutor(max_workers=4) as executor:
         for url in urls:
-            futures = executor.submit(dl.downloader, dl.ydl_opts, url)
+            futures = executor.submit(dl.download1, dl.ydl_opts, url)
             futures_list.append(futures)
             logger.debug('futures_list len: %s ' % len(futures_list))
 
@@ -57,7 +57,7 @@ if __name__ == "__main__":
         'https://www.youtube.com/watch?v=d0FV3_i-6WU+',
     ]
 
-    results = download_all(url, urls)
+    results = downloadx(url, urls)
     for result in results:
         print(f'Result: {result}')
         logger.info('Result: %s\n' % result)

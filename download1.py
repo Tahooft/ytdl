@@ -43,7 +43,7 @@ ydl_opts = {
 }
 
 
-def downloader(ydl_opts, url):
+def download1(ydl_opts, url):
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         try:
             ydl.download([url])
@@ -70,7 +70,7 @@ if __name__ == "__main__":
     # url = 'https://www.youtube.com/watch?v=nTasT5h0LEg'   # Error test
     url = 'https://www.youtube.com/watch?v=d0FV3_i-6WU+'
 
-    downloader(ydl_opts, url)
+    download1(ydl_opts, url)
 
     print("Ended and all that")
     logger.info('End of test')
