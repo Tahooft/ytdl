@@ -61,8 +61,6 @@ def download1(ydl_opts, url):
             result = 'Download busy: %s' % url
             return result
 
-    return result
-
 
 # Test
 if __name__ == "__main__":

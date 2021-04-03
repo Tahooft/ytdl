@@ -18,3 +18,68 @@
 
 11:55:31 DEBUG: __main__ - downloadx - 140446587868992 - MainThread - Done
 
+12:05:15 INFO: threader - threader - 140309149652800 - MainThread - A new url: https://www.youtube.com/watch?v=qVpWpfD27mM 
+12:05:15 INFO: threader - threader - 140309149652800 - MainThread - URL added: https://www.youtube.com/watch?v=qVpWpfD27mM
+12:05:15 INFO: threader - threader - 140309149652800 - MainThread - Total urls: 3
+12:05:15 INFO: threader - threader - 140309149652800 - MainThread - Latest thread: Thread-1
+12:05:15 INFO: threader - threader - 140309149652800 - MainThread - Total threads: 1
+12:05:15 INFO: threader - threader - 140309149652800 - MainThread - URL added: https://www.youtube.com/watch?v=84U5NlBOD64
+12:05:15 INFO: threader - threader - 140309149652800 - MainThread - Total urls: 2
+12:05:15 INFO: threader - threader - 140309149652800 - MainThread - Latest thread: Thread-2
+12:05:15 INFO: threader - threader - 140309149652800 - MainThread - Total threads: 2
+12:05:15 INFO: threader - threader - 140309149652800 - MainThread - URL added: https://www.youtube.com/watch?v=7Ht9jkWXqlU
+12:05:15 INFO: threader - threader - 140309149652800 - MainThread - Total urls: 1
+12:05:15 INFO: threader - threader - 140309149652800 - MainThread - Latest thread: Thread-3
+12:05:15 INFO: threader - threader - 140309149652800 - MainThread - Total threads: 3
+12:05:15 INFO: threader - threader - 140309149652800 - MainThread - URL added: https://www.youtube.com/watch?v=SV6M0MxPGM0
+12:05:15 INFO: threader - threader - 140309149652800 - MainThread - Total urls: 0
+12:05:15 INFO: threader - threader - 140309149652800 - MainThread - Latest thread: Thread-4
+12:05:15 INFO: threader - threader - 140309149652800 - MainThread - Total threads: 4
+12:07:41 INFO: threader - threader - 140309149652800 - MainThread - Done these threads: ['Thread-1', 'Thread-2', 'Thread-3', 'Thread-4']
+
+17:18:15 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - futures_list len: 1 
+17:18:15 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - futures_list len: 2 
+17:18:15 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - futures_list len: 3 
+17:18:15 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - futures_list len: 4 
+17:18:15 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - futures_list len: 5 
+17:18:15 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - futures_list len: 6 
+17:18:15 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - futures_list len: 7 
+17:18:15 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - futures_list len: 8 
+17:18:15 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - futures_list len: 9 
+17:18:15 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - futures_list len: 10 
+17:18:15 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - futures_list len: 11 
+17:18:19 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - result: Download busy: https://www.youtube.com/watch?v=v2r2riGruPM 
+17:18:19 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - result: Download busy: https://www.youtube.com/watch?v=yvxMlQrGLkM 
+17:18:19 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - result: Download busy: https://www.youtube.com/watch?v=nTasT5h0LEg 
+17:18:19 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - result: Download busy: https://www.youtube.com/watch?v=7Ht9jkWXqlU 
+17:18:19 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - result: Download busy: https://www.youtube.com/watch?v=84U5NlBOD64 
+17:18:20 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - result: Download busy: https://www.youtube.com/watch?v=q9MAIwJMc1U 
+17:18:20 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - result: Download busy: https://www.youtube.com/watch?v=ya6yw7RPjGg 
+17:18:20 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - result: Download busy: https://www.youtube.com/watch?v=ALZmCy2u0jQ 
+17:18:21 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - result: Download busy: https://www.youtube.com/watch?v=qVpWpfD27mM 
+17:18:21 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - result: Download busy: https://www.youtube.com/watch?v=d0FV3_i-6WU+ 
+17:18:21 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - result: Download busy: https://www.youtube.com/watch?v=qVpWpfD27mM 
+17:18:21 INFO: __main__ - downloadx - 140618435532608 - MainThread - Result: Download busy: https://www.youtube.com/watch?v=v2r2riGruPM
+
+17:18:21 INFO: __main__ - downloadx - 140618435532608 - MainThread - Result: Download busy: https://www.youtube.com/watch?v=yvxMlQrGLkM
+
+17:18:21 INFO: __main__ - downloadx - 140618435532608 - MainThread - Result: Download busy: https://www.youtube.com/watch?v=nTasT5h0LEg
+
+17:18:21 INFO: __main__ - downloadx - 140618435532608 - MainThread - Result: Download busy: https://www.youtube.com/watch?v=7Ht9jkWXqlU
+
+17:18:21 INFO: __main__ - downloadx - 140618435532608 - MainThread - Result: Download busy: https://www.youtube.com/watch?v=84U5NlBOD64
+
+17:18:21 INFO: __main__ - downloadx - 140618435532608 - MainThread - Result: Download busy: https://www.youtube.com/watch?v=q9MAIwJMc1U
+
+17:18:21 INFO: __main__ - downloadx - 140618435532608 - MainThread - Result: Download busy: https://www.youtube.com/watch?v=ya6yw7RPjGg
+
+17:18:21 INFO: __main__ - downloadx - 140618435532608 - MainThread - Result: Download busy: https://www.youtube.com/watch?v=ALZmCy2u0jQ
+
+17:18:21 INFO: __main__ - downloadx - 140618435532608 - MainThread - Result: Download busy: https://www.youtube.com/watch?v=qVpWpfD27mM
+
+17:18:21 INFO: __main__ - downloadx - 140618435532608 - MainThread - Result: Download busy: https://www.youtube.com/watch?v=d0FV3_i-6WU+
+
+17:18:21 INFO: __main__ - downloadx - 140618435532608 - MainThread - Result: Download busy: https://www.youtube.com/watch?v=qVpWpfD27mM
+
+17:18:21 DEBUG: __main__ - downloadx - 140618435532608 - MainThread - Done
+

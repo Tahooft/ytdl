@@ -1,5 +1,5 @@
 import threading
-import downloader as dl
+import download1 as dl
 import logging.config
 import yaml
 
@@ -11,7 +11,7 @@ logger = logging.getLogger('threader')
 
 def threader(url, urls):
 
-    logger.info('A new url: {} '.format(url))
+    logger.info('A new url: %(url)s ' % url)
     threads = []
     urls.append(url)
 
@@ -21,7 +21,7 @@ def threader(url, urls):
         logger.info(f'URL added: {url}')
         logger.info(f'Total urls: {total_urls}')
 
-        t = threading.Thread(target=dl.downloader, args=[dl.ydl_opts, url])
+        t = threading.Thread(target=dl.download1, args=[dl.ydl_opts, url])
         t.start()
         thread = t.getName()
         threads.append(thread)
