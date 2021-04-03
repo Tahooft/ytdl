@@ -64,11 +64,16 @@ def download1(ydl_opts, url):
 
 # Test
 if __name__ == "__main__":
+
+    from time import sleep
+
     # url = 'https://www.youtube.com/watch?v=qVpWpfD27mM'
     # url = 'https://www.youtube.com/watch?v=nTasT5h0LEg'   # Error test
     url = 'https://www.youtube.com/watch?v=d0FV3_i-6WU+'
 
     download1(ydl_opts, url)
 
-    print("Ended and all that")
+    print("Ended and all that now waiting 30 secs")
     logger.info('End of test')
+    sleep(30)
+    print('Done')

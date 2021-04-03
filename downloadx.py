@@ -2,7 +2,6 @@ from concurrent.futures import ThreadPoolExecutor
 import download1 as dl
 import logging.config
 import yaml
-from time import sleep
 
 
 with open('./log.yaml', 'r') as stream:
@@ -45,6 +44,8 @@ def downloadx(url, urls):
 
 # Test
 if __name__ == "__main__":
+
+    from time import sleep
 
     url = 'https://www.youtube.com/watch?v=qVpWpfD27mM'
 

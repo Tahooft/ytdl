@@ -2,7 +2,6 @@ import threading
 import download1 as dl
 import logging.config
 import yaml
-from time import sleep
 
 
 with open('./log.yaml', 'r') as stream:
@@ -37,6 +36,9 @@ def threader(url, urls):
 
 # Test
 if __name__ == "__main__":
+
+    from time import sleep
+
     urls = [
         'https://www.youtube.com/watch?v=v2r2riGruPM',
         'https://www.youtube.com/watch?v=yvxMlQrGLkM',
