@@ -27,8 +27,8 @@ def my_hook(d):
         pass
     elif d['status'] == 'finished':
         f = d['filename']
-        logger.info('\n<my_hook> Status finished: %s\n' % f)
-        print('\n<my_hook> download of %s finished\n' % f)
+        logger.info('\n<my_hook> Status finished: %s' % f)
+        print('\n<my_hook> ownload of %s finished' % f)
 
 
 ydl_opts = {

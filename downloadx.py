@@ -64,7 +64,7 @@ if __name__ == "__main__":
     results = downloadx(url, urls)
     for result in results:
         print(f'Result: {result}')
-        logger.info('Result: %s\n' % result)
+        logger.info('Result: %s' % result)
 
     print('Done\n')
     logger.debug('Done\n')

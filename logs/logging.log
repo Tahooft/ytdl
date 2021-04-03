@@ -120,3 +120,53 @@ Downloadx error!!!:
 
 17:48:47 DEBUG: __main__ - downloadx - 140027637110592 - MainThread - Done
 
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - A new url: https://www.youtube.com/watch?v=qVpWpfD27mM
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - URL added: https://www.youtube.com/watch?v=qVpWpfD27mM
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - Total urls: 9 
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - Latest thread: Thread-1
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - Total threads: 1
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - URL added: https://www.youtube.com/watch?v=d0FV3_i-6WU+
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - Total urls: 8 
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - Latest thread: Thread-2
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - Total threads: 2
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - URL added: https://www.youtube.com/watch?v=ALZmCy2u0jQ
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - Total urls: 7 
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - Latest thread: Thread-3
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - Total threads: 3
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - URL added: https://www.youtube.com/watch?v=ya6yw7RPjGg
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - Total urls: 6 
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - Latest thread: Thread-4
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - Total threads: 4
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - URL added: https://www.youtube.com/watch?v=q9MAIwJMc1U
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - Total urls: 5 
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - Latest thread: Thread-5
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - Total threads: 5
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - URL added: https://www.youtube.com/watch?v=84U5NlBOD64
+17:56:01 INFO: threader - threader - 140675139974976 - MainThread - Total urls: 4 
+17:56:02 INFO: threader - threader - 140675139974976 - MainThread - Latest thread: Thread-6
+17:56:02 INFO: threader - threader - 140675139974976 - MainThread - Total threads: 6
+17:56:02 INFO: threader - threader - 140675139974976 - MainThread - URL added: https://www.youtube.com/watch?v=7Ht9jkWXqlU
+17:56:02 INFO: threader - threader - 140675139974976 - MainThread - Total urls: 3 
+17:56:02 INFO: threader - threader - 140675139974976 - MainThread - Latest thread: Thread-7
+17:56:02 INFO: threader - threader - 140675139974976 - MainThread - Total threads: 7
+17:56:02 INFO: threader - threader - 140675139974976 - MainThread - URL added: https://www.youtube.com/watch?v=nTasT5h0LEg
+17:56:02 INFO: threader - threader - 140675139974976 - MainThread - Total urls: 2 
+17:56:02 INFO: threader - threader - 140675139974976 - MainThread - Latest thread: Thread-8
+17:56:02 INFO: threader - threader - 140675139974976 - MainThread - Total threads: 8
+17:56:02 INFO: threader - threader - 140675139974976 - MainThread - URL added: https://www.youtube.com/watch?v=yvxMlQrGLkM
+17:56:02 INFO: threader - threader - 140675139974976 - MainThread - Total urls: 1 
+17:56:03 INFO: threader - threader - 140675139974976 - MainThread - Latest thread: Thread-9
+17:56:03 INFO: threader - threader - 140675139974976 - MainThread - Total threads: 9
+17:56:03 INFO: threader - threader - 140675139974976 - MainThread - URL added: https://www.youtube.com/watch?v=v2r2riGruPM
+17:56:03 INFO: threader - threader - 140675139974976 - MainThread - Total urls: 0 
+17:56:03 INFO: threader - threader - 140675139974976 - MainThread - Latest thread: Thread-10
+17:56:03 INFO: threader - threader - 140675139974976 - MainThread - Total threads: 10
+17:56:06 INFO: threader - threader - 140675139974976 - MainThread - Done these threads: ['Thread-1', 'Thread-2', 'Thread-3', 'Thread-4', 'Thread-5', 'Thread-6', 'Thread-7', 'Thread-8', 'Thread-9', 'Thread-10']
+
+18:07:05 DEBUG: __main__ - YoutubeDL - 140647659575104 - MainThread - [youtube] d0FV3_i-6WU: Downloading webpage
+18:07:05 DEBUG: __main__ - YoutubeDL - 140647659575104 - MainThread - [youtube] d0FV3_i-6WU: Downloading API JSON
+18:07:05 DEBUG: __main__ - YoutubeDL - 140647659575104 - MainThread - [youtube] d0FV3_i-6WU: Downloading API JSON
+18:07:06 DEBUG: __main__ - YoutubeDL - 140647659575104 - MainThread - [download] /home/th/Downloads/TUULETAR - Ievan polkka w_ lyrics.mp4 has already been downloaded and merged
+18:07:06 INFO: __main__ - download1 - 140647659575104 - MainThread - started downloading : https://www.youtube.com/watch?v=d0FV3_i-6WU+
+18:07:06 INFO: __main__ - download1 - 140647659575104 - MainThread - Downloader busy: https://www.youtube.com/watch?v=d0FV3_i-6WU+
+18:07:06 INFO: __main__ - download1 - 140647659575104 - MainThread - End of test

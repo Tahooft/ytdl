@@ -2,6 +2,8 @@ import threading
 import download1 as dl
 import logging.config
 import yaml
+from time import sleep
+
 
 with open('./log.yaml', 'r') as stream:
     config = yaml.load(stream, Loader=yaml.FullLoader)
@@ -36,11 +38,18 @@ def threader(url, urls):
 # Test
 if __name__ == "__main__":
     urls = [
-        'https://www.youtube.com/watch?v=SV6M0MxPGM0',
+        'https://www.youtube.com/watch?v=v2r2riGruPM',
+        'https://www.youtube.com/watch?v=yvxMlQrGLkM',
+        'https://www.youtube.com/watch?v=nTasT5h0LEg',
         'https://www.youtube.com/watch?v=7Ht9jkWXqlU',
         'https://www.youtube.com/watch?v=84U5NlBOD64',
+        'https://www.youtube.com/watch?v=q9MAIwJMc1U',
+        'https://www.youtube.com/watch?v=ya6yw7RPjGg',
+        'https://www.youtube.com/watch?v=ALZmCy2u0jQ',
+        'https://www.youtube.com/watch?v=d0FV3_i-6WU+',
     ]
     # urls = []
     url = 'https://www.youtube.com/watch?v=qVpWpfD27mM'
 
     threader(url, urls)
+    sleep(30)
