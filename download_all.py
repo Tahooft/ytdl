@@ -8,7 +8,7 @@ from time import sleep
 with open('./log.yaml', 'r') as stream:
     config = yaml.load(stream, Loader=yaml.FullLoader)
 logging.config.dictConfig(config)
-logger = logging.getLogger('download_all')
+logger = logging.getLogger(__name__)
 
 
 def download_all(url, urls):
@@ -25,7 +25,7 @@ def download_all(url, urls):
         for url in urls:
             futures = executor.submit(dl.downloader, dl.ydl_opts, url)
             futures_list.append(futures)
-            logger.debug('futures_list: %s ' % futures_list)
+            logger.debug('futures_list len: %s ' % len(futures_list))
 
         for future in futures_list:
             try:
@@ -39,6 +39,7 @@ def download_all(url, urls):
     return results
 
 
+# Test
 if __name__ == "__main__":
 
     url = 'https://www.youtube.com/watch?v=qVpWpfD27mM'

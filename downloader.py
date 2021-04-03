@@ -6,7 +6,7 @@ import yaml
 with open('./log.yaml', 'r') as stream:
     config = yaml.load(stream, Loader=yaml.FullLoader)
 logging.config.dictConfig(config)
-logger = logging.getLogger('downloader')
+logger = logging.getLogger(__name__)
 
 url = 'url init'
 
@@ -51,8 +51,7 @@ def downloader(ydl_opts, url):
             logger.error('\nYoutube_dl DownloadError at: %s' % url)
             logger.error(e)
         except Exception as e:
-            logger.error('\nOther error at: %s' % url)
-            logger.debug(f'Youtube_dl error:\n {e}')
+            logger.error('\nOther error at: %s' % e)
         else:
             logger.info('started downloading : %s' % url)
             result = 'started downloading %s' % url

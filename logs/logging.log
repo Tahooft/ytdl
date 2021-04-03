@@ -1,0 +1,7 @@
+10:32:14 DEBUG: __main__ - YoutubeDL - 140584052725568 - MainThread - [youtube] d0FV3_i-6WU: Downloading webpage
+10:32:15 DEBUG: __main__ - YoutubeDL - 140584052725568 - MainThread - [youtube] d0FV3_i-6WU: Downloading API JSON
+10:32:15 DEBUG: __main__ - YoutubeDL - 140584052725568 - MainThread - [youtube] d0FV3_i-6WU: Downloading API JSON
+10:32:16 DEBUG: __main__ - YoutubeDL - 140584052725568 - MainThread - [download] /home/th/Downloads/TUULETAR - Ievan polkka w_ lyrics.mp4 has already been downloaded and merged
+10:32:16 INFO: __main__ - downloader - 140584052725568 - MainThread - started downloading : https://www.youtube.com/watch?v=d0FV3_i-6WU+
+10:32:16 INFO: __main__ - downloader - 140584052725568 - MainThread - Downloader busy: https://www.youtube.com/watch?v=d0FV3_i-6WU+
+10:32:16 INFO: __main__ - downloader - 140584052725568 - MainThread - End of test

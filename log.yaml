@@ -15,17 +15,19 @@ handlers:
     console:
         class: logging.StreamHandler
         formatter: simpleFormatter
-        level: DEBUG
+        level: WARNING
         stream: ext://sys.stdout
     file:
-        class : logging.FileHandler
+        class: logging.handlers.RotatingFileHandler
         formatter: fullFormatter
         level: DEBUG
-        filename: logs/warning.log
+        filename: logs/logging.log
+        maxBytes: 4000
+        backupCount: 0
 
 loggers:
     clogger:
-        level: DEBUG
+        level: WARNING
         handlers: [console]
     flogger:
         level: DEBUG
