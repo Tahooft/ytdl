@@ -40,7 +40,7 @@ def downloadx(url, urls):
                 logger.error('\nDownloadx error!:\n%s\n' % e)
 
             else:
-                fdone = future.done
+                fdone = future.done()
                 logger.debug('Future done: %s ' % fdone)
 
     return results
