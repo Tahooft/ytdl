@@ -33,11 +33,15 @@ def downloadx(url, urls):
                 logger.debug('result: %s ' % result)
 
             except TimeoutError as terror:
-                logger.error('\nTimeout error!!!:\n%s\n' % terror)
+                logger.error('\nTimeout error!:\n%s\n' % terror)
 
             except Exception as e:
                 results.append(None)
-                logger.error('\nDownloadx error!!!:\n%s\n' % e)
+                logger.error('\nDownloadx error!:\n%s\n' % e)
+
+            else:
+                fdone = future.done
+                logger.debug('Future done: %s ' % fdone)
 
     return results
 
