@@ -22,7 +22,7 @@ handlers:
         formatter: fullFormatter
         level: DEBUG
         filename: templog/logging.log
-        maxBytes: 16000
+        maxBytes: 110000
         backupCount: 3
 
 loggers:

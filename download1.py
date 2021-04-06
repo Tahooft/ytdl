@@ -14,21 +14,20 @@ url = 'url init'
 def my_hook(d):
     if d['status'] == 'error':
         f = d['filename']
-        logger.error('Error while downloading %s' % f)
-        raise youtube_dl.utils.DownloadError('\nDownload error raised\n')
-    elif d['status'] == 'downloading':
-        logger.debug('Downloading: %s' % url)
+        logger.error('[mh] Error while downloading %s' % f)
+        raise youtube_dl.utils.DownloadError('\n[mh] Download error raised\n')
+    elif d['status'] == 'Downloading':
+        logger.debug('[mh] Downloading: %s' % url)
         p = d['_percent_str']
-        logger.debug('Downloaded so far: %s' % p)
+        logger.debug('[mh] Downloaded so far: %s' % p)
         f = d['filename']
-        logger.debug('Filename: %s' % f)
+        logger.debug('[mh] Filename: %s' % f)
         e = d['_eta_str']
-        logger.debug('Estimated time left: %s' % e)
-        pass
+        logger.debug('[mh] Estimated time left: %s' % e)
     elif d['status'] == 'finished':
         f = d['filename']
-        logger.info('<my_hook> Status finished: %s' % f)
-        print('<my_hook> Download of %s finished' % f)
+        logger.info('[mh] Status finished: %s' % f)
+        print('[mh] Download of %s finished' % f)
 
 
 ydl_opts = {
@@ -48,14 +47,16 @@ def download1(ydl_opts, url):
         try:
             ydl.download([url])
         except youtube_dl.utils.DownloadError as e:
-            logger.error('Youtube_dl DownloadError at: %s' % url)
+            result = '[d1]Youtube_dl DownloadError at: %s' % url
+            logger.error('[d1]Youtube_dl DownloadError at: %s' % url)
             logger.error(e)
         except Exception as e:
-            logger.error('\nOther error at: %s' % e)
+            result = '[d1]Other error at: %s' % e
+            logger.error('[d1]Other error at: %s' % e)
         else:
-            logger.debug('Started downloading : %s' % url)
-            result = 'Started downloading %s' % url
-
+            result = '[d1] Started:  %s' % url
+            logger.debug('[d1]Started: %s' % url)
+        finally:
             return result
 
 
@@ -63,7 +64,7 @@ def download1(ydl_opts, url):
 if __name__ == "__main__":
 
     from time import sleep
-
+    # url = 'https://www.youtube.com/watch?v=xwGJYIWhZDM'   # Large file
     # url = 'https://www.youtube.com/watch?v=qVpWpfD27mM'
     # url = 'https://www.youtube.com/watch?v=nTasT5h0LEg'   # Error test
     url = 'https://www.youtube.com/watch?v=d0FV3_i-6WU+'
@@ -71,6 +72,6 @@ if __name__ == "__main__":
     download1(ydl_opts, url)
 
     print("Ended and all that now waiting 10 secs")
-    logger.debug('End of test')
+    logger.debug('[d1 test] End of test')
     sleep(10)
     print('Done')

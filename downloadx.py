@@ -24,24 +24,33 @@ def downloadx(url, urls):
         for url in urls:
             futures = executor.submit(dl.download1, dl.ydl_opts, url)
             futures_list.append(futures)
-            logger.debug('futures_list len: %s ' % len(futures_list))
+            logger.debug('[x] Added futures: %s' % futures)
+            logger.debug('[x] futures_list len: %d ' % len(futures_list))
+
+        logger.debug('[x] All futures added\n')
 
         for future in futures_list:
             try:
                 result = future.result(timeout=20)
                 results.append(result)
-                logger.debug('result: %s ' % result)
+                logger.debug('[x] Result: %s ' % result)
 
             except TimeoutError as terror:
-                logger.error('\nTimeout error!:\n%s\n' % terror)
+                logger.error('[x] Timeout error!:\n%s' % terror)
 
-            except Exception as e:
+            except Exception:
                 results.append(None)
-                logger.error('\nDownloadx error!:\n%s\n' % e)
+                excerror = future.exception()
+                logger.error('[x] Excecption for future: %s' % excerror)
 
             else:
+                frunning = future.running()
+                logger.debug('[x] Future running: %s ' % frunning)
+
                 fdone = future.done()
-                logger.debug('Future done: %s ' % fdone)
+                logger.debug('[x] Future done: %s ' % fdone)
+
+                logger.debug('')
 
     return results
 
@@ -68,9 +77,9 @@ if __name__ == "__main__":
 
     results = downloadx(url, urls)
     for result in results:
-        print(f'Result: {result}')
-        logger.info('Result: %s' % result)
+        print(f'Result test: {result}')
+        logger.info('[x] [Result test ]: %s' % result)
 
-    print('Done\n')
-    logger.debug('Done\n')
     sleep(30)
+    print('Test done\n')
+    logger.debug('Test done\n')
