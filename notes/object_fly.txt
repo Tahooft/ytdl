@@ -1,0 +1,19 @@
+testobj = type('testclass', (object,),
+                 {'test':[a1,a2,b2], 'test2':'something else', 'test3':1})()
+
+
+mutable:    list, dict, set, user defined classes
+immutable:  strings, tuples
+
+
+id()    identity, address of object. Compare with: is
+type()  possible values & operations (len, next, ..)
+
+
+
+# list of records
+queue = [None] * 10
+for i in range(10):
+    queue[i] = [None] * 7
+
+print(queue)

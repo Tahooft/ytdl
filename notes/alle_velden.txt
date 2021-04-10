@@ -34,7 +34,6 @@ downloadx
             Future running
             Future done
             
-url  [status][6]  
-url
+url  [status][6]  url
 
     

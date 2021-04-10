@@ -75,3 +75,7 @@ if __name__ == "__main__":
     logger.debug('[d1 test] End of test')
     sleep(10)
     print('Done')
+
+# Notes
+# except youtube_dl.utils.DownloadError:
+#                     pass

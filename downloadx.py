@@ -62,18 +62,7 @@ if __name__ == "__main__":
 
     url = 'https://www.youtube.com/watch?v=qVpWpfD27mM'
 
-    urls = [
-        'https://www.youtube.com/watch?v=v2r2riGruPM',
-        'https://www.youtube.com/watch?v=yvxMlQrGLkM',
-        'https://www.youtube.com/watch?v=nTasT5h0LEg',
-        'https://www.youtube.com/watch?v=7Ht9jkWXqlU',
-        'https://www.youtube.com/watch?v=84U5NlBOD64',
-        'https://www.youtube.com/watch?v=q9MAIwJMc1U',
-        'https://www.youtube.com/watch?v=ya6yw7RPjGg',
-        'https://www.youtube.com/watch?v=ALZmCy2u0jQ',
-        'https://www.youtube.com/watch?v=qVpWpfD27mM',
-        'https://www.youtube.com/watch?v=d0FV3_i-6WU+',
-    ]
+    urls = []
 
     results = downloadx(url, urls)
     for result in results:
