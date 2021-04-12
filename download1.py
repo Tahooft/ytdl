@@ -77,18 +77,16 @@ def download1(ydl_opts, url):
             result = '[d1]Other error at: %s' % e
             logger.error('[d1]Other error at: %s' % e)
         else:
-            result = '[d1] Started:  %s' % url
-            # logger.debug('%s' % result)
+            logger.info('[d1] Ended1: %s' % url)
         finally:
-            feedback['result'] = result
-            logger.debug('%s' % feedback)
-            return feedback
+            result = 'Ended:  %s' % url
+            logger.info('[d1] Ended2: %s' % url)
+            return result
 
 
 # Test
 if __name__ == "__main__":
 
-    from time import sleep
     # url = 'https://www.youtube.com/watch?v=xwGJYIWhZDM'   # Large file
     # url = 'https://www.youtube.com/watch?v=qVpWpfD27mM'
     # url = 'https://www.youtube.com/watch?v=nTasT5h0LEg'   # Error test
@@ -96,10 +94,8 @@ if __name__ == "__main__":
 
     result = download1(ydl_opts, url)
 
-    print("Ended, now waiting 10 secs")
-    logger.debug('[d1 test] End of test')
-    sleep(10)
-    print('Done:\n %s' % result)
+    logger.info('[d1 test] End of test')
+    print('Done: %s\n' % result)
 
 # Notes
 # except youtube_dl.utils.DownloadError:
