@@ -66,21 +66,25 @@ ydl_opts = {
 
 
 def download1(ydl_opts, url):
+    """
+    Downloads url
+        if download succeeded returns same url
+        else returns False
+    """
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         try:
             ydl.download([url])
         except youtube_dl.utils.DownloadError as e:
-            result = '[d1]Youtube_dl DownloadError at: %s' % url
+            result = False
             logger.error('[d1]Youtube_dl DownloadError at: %s' % url)
             logger.error(e)
         except Exception as e:
-            result = '[d1]Other error at: %s' % e
+            result = False
             logger.error('[d1]Other error at: %s' % e)
         else:
+            result = url
             logger.info('[d1] Ended1: %s' % url)
         finally:
-            result = 'Ended:  %s' % url
-            logger.info('[d1] Ended2: %s' % url)
             return result
 
 
