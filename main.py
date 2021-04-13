@@ -1,9 +1,11 @@
-import time
-import pyperclip as clipboard
-from regulars import isValidURL
-import downloadx as dx
 import logging.config
+import time
+
+import pyperclip as clipboard
 import yaml
+
+import downloadx as dx
+from regulars import isValidURL
 
 with open('./log.yaml', 'r') as stream:
     config = yaml.load(stream, Loader=yaml.FullLoader)

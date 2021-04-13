@@ -21,7 +21,7 @@ handlers:
         class: logging.handlers.RotatingFileHandler
         formatter: fullFormatter
         level: DEBUG
-        filename: templog/logging.log
+        filename: log/logging.log
         maxBytes: 110000
         backupCount: 3
 

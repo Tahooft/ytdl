@@ -1,8 +1,9 @@
-from concurrent.futures import ThreadPoolExecutor
-import download1 as dl
 import logging.config
+from concurrent.futures import ThreadPoolExecutor
+
 import yaml
 
+import download1 as dl
 
 with open('./log.yaml', 'r') as stream:
     config = yaml.load(stream, Loader=yaml.FullLoader)
@@ -86,7 +87,7 @@ if __name__ == "__main__":
         'https://www.youtube.com/watch?v=ALZmCy2u0jQ',
         'https://www.youtube.com/watch?v=qVpWpfD27mM',
         'https://www.youtube.com/watch?v=d0FV3_i-6WU+',
-        ]
+    ]
 
     results = downloadx(url, urls)
     sleep(60)

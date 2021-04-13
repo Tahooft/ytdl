@@ -1,5 +1,6 @@
-import re
 import logging.config
+import re
+
 import yaml
 
 with open('./log.yaml', 'r') as stream:

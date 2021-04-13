@@ -1,7 +1,9 @@
 from __future__ import unicode_literals
-import youtube_dl
+
 import logging.config
+
 import yaml
+import youtube_dl
 
 with open('./log.yaml', 'r') as stream:
     config = yaml.load(stream, Loader=yaml.FullLoader)
