@@ -58,23 +58,38 @@ def downloadx(url, urls):
                 logger.info('[x] Future done: %s ' % fdone)
                 results.append(result)
         logger.info('[x] Results returned: %s ' % results)
-        return results
+
+    return results
 
 
 # Test
 if __name__ == "__main__":
 
-    # from time import sleep
+    from time import sleep
 
     url = 'https://www.youtube.com/watch?v=4CLzzwDBvlA'   # short file
     # url = 'https://www.youtube.com/watch?v=wXaN2vXEgwg'  # medium file
     # url = 'https://www.youtube.com/watch?v=xwGJYIWhZDM'   # large file
 
     # 0 urls
-    urls = []
+    urls = [
+        'https://www.youtube.com/watch?v=2KxJ6eTY9bA',
+        'https://www.youtube.com/watch?v=qE8PG2mpo58',
+        'https://www.youtube.com/watch?v=v2r2riGruPM',
+        'https://www.youtube.com/watch?v=yvxMlQrGLkM',
+        'https://www.youtube.com/watch?v=gm3dSYAWiUk',
+        'https://www.youtube.com/watch?v=nTasT5h0LEg',
+        'https://www.youtube.com/watch?v=7Ht9jkWXqlU',
+        'https://www.youtube.com/watch?v=84U5NlBOD64',
+        'https://www.youtube.com/watch?v=q9MAIwJMc1U',
+        'https://www.youtube.com/watch?v=ya6yw7RPjGg',
+        'https://www.youtube.com/watch?v=ALZmCy2u0jQ',
+        'https://www.youtube.com/watch?v=qVpWpfD27mM',
+        'https://www.youtube.com/watch?v=d0FV3_i-6WU+',
+        ]
 
     results = downloadx(url, urls)
-
+    sleep(60)
     print()
     logger.info('[x test] Results ..........')
 
@@ -82,7 +97,6 @@ if __name__ == "__main__":
         print(f'Result test: {result}')
         logger.info('[x test]: %s' % result)
 
-    # sleep(30)
     print('\n......... Test done\n')
     print(results)
 
