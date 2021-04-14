@@ -1,8 +1,9 @@
-from concurrent.futures import ThreadPoolExecutor, as_completed
-import download1 as dl
 import logging.config
+from concurrent.futures import ThreadPoolExecutor
+
 import yaml
 
+import download1 as dl
 
 with open('./log.yaml', 'r') as stream:
     config = yaml.load(stream, Loader=yaml.FullLoader)
@@ -31,7 +32,7 @@ def downloadx(url, urls):
             logger.info('[x] futures_list len: %d ' % running)
         logger.info('[x] All futures added\n')
 
-        for future in as_completed(futures_list):
+        for future in futures_list:
             try:
                 result = future.result(timeout=20)
                 # results.append(result)
@@ -65,7 +66,7 @@ def downloadx(url, urls):
 # Test
 if __name__ == "__main__":
 
-    # from time import sleep
+    from time import sleep
 
     url = 'https://www.youtube.com/watch?v=4CLzzwDBvlA'   # short file
     # url = 'https://www.youtube.com/watch?v=wXaN2vXEgwg'  # medium file
@@ -86,10 +87,10 @@ if __name__ == "__main__":
         'https://www.youtube.com/watch?v=ALZmCy2u0jQ',
         'https://www.youtube.com/watch?v=qVpWpfD27mM',
         'https://www.youtube.com/watch?v=d0FV3_i-6WU+',
-        ]
+    ]
 
     results = downloadx(url, urls)
-    # sleep(60)
+    sleep(60)
     print()
     logger.info('[x test] Results ..........')
 
