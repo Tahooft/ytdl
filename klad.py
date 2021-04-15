@@ -19,7 +19,7 @@ def downloadx(url, urls):
     urls.append(url)
 
     futures_list = []
-    results = {}
+    results = []
 
     with ThreadPoolExecutor(max_workers=4) as executor:
 
@@ -27,40 +27,33 @@ def downloadx(url, urls):
             futures = executor.submit(dl.download1, dl.ydl_opts, url)
             futures_list.append(futures)
             logger.info('[x] Added futures: %s' % futures)
-            logger.info('[x] futures_list len: %d ' % len(futures_list))
         logger.info('[x] All futures added\n')
 
         for future in as_completed(futures_list):
             try:
-                result = future.result(timeout=20)
-                # results.append(result)
-                logger.info('[x] Result: %s ' % result)
-                print(futures_list)
-                print('[x] Result: %s\n' % result)
+                result = future.result(timeout=30)
+                # print(futures_list)
+                # print('[x] Result: %s\n' % result)
+                # logger.info('[x] Result: %s ' % result)
             except TimeoutError as terror:
                 logger.error('[x] Timeout error!:\n%s' % terror)
+            except UnboundLocalError as unbound:
+                print('Unbound: %s !!!! ' % unbound)
+                results.append('Unbound')
+                results.append(result)
+                logger.info('[xe] UnboundLocalError: %s' % unbound)
             except Exception:
+                results.append('Exception')
+                results.append(result)
                 logger.info('[xe] Exception for future: %s' % future)
-                frunning = future.running()
-                logger.info('[xe] Future running: %s ' % frunning)
-                fdone = future.done()
-                logger.info('[xe] Future done: %s ' % fdone)
-                results['nope'] = None
             else:
                 # frunning = future.running()
-                # url als index  (result = url/false)
-                fdone = future.done()
-                if fdone is False:
-                    results['result'] = 'not done'
-                else:
-                    results[result] = fdone
-                results[result] = fdone
-                logger.info('[x] Results %s ' % results)
+                if future.done() is True:
+                    results.append(result)
+                    logger.info('[x] Results %s ' % results)
 
-    logger.info('[x] Results returned: %s ' % futures_list)
-
-    print('[x] results verzameld:\n %s' % results)
-    return futures_list
+    logger.info('[x] Results returned futures_list: %s ' % futures_list)
+    return results
 
 
 # Test
@@ -72,7 +65,7 @@ if __name__ == "__main__":
     # url = 'https://www.youtube.com/watch?v=wXaN2vXEgwg'  # medium file
     # url = 'https://www.youtube.com/watch?v=xwGJYIWhZDM'   # large file
 
-    # 0 urls
+    # 13 urls (+1 voor url)
     urls = [
         'https://www.youtube.com/watch?v=2KxJ6eTY9bA',
         'https://www.youtube.com/watch?v=qE8PG2mpo58',
@@ -95,13 +88,9 @@ if __name__ == "__main__":
     logger.info('[x test] Results ..........')
     print()
 
-    # for result in results:
-    #     line = result.items
-    #     print(f'Result test: {result.items}')
-    #     logger.info('[x test]: %s' % key, result)
-
-    print('Returned results:')
-    print(results)
+    for result in results:
+        print('x test: %s' % result)
+        logger.info('[x test]: %s' % result)
 
     logger.info('[x test] Test done\n\n')
     print('\n......... Test done\n')

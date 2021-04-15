@@ -1,5 +1,5 @@
 import logging.config
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import yaml
 
@@ -26,53 +26,46 @@ def downloadx(url, urls):
         for url in urls:
             futures = executor.submit(dl.download1, dl.ydl_opts, url)
             futures_list.append(futures)
-            running = len(futures_list)
-
             logger.info('[x] Added futures: %s' % futures)
-            logger.info('[x] futures_list len: %d ' % running)
         logger.info('[x] All futures added\n')
 
-        for future in futures_list:
+        for future in as_completed(futures_list):
             try:
-                result = future.result(timeout=20)
-                # results.append(result)
-                logger.info('[x] Result: %s ' % result)
-                print('[x] Result: %s ' % result)
+                result = future.result(timeout=30)
+                # print(futures_list)
+                # print('[x] Result: %s\n' % result)
+                # logger.info('[x] Result: %s ' % result)
             except TimeoutError as terror:
                 logger.error('[x] Timeout error!:\n%s' % terror)
-            except Exception:
-                logger.info('[xe] Exception for future: %s' % future)
-                frunning = future.running()
-                logger.info('[xe] Future running: %s ' % frunning)
-                fdone = future.done()
-                logger.info('[xe] Future done: %s ' % fdone)
-                # excerror = future.exception()
-                # logger.error('[x] Exception for future: %s' % excerror)
-                if frunning is False:
-                    results.append(None)
-                else:
-                    results.append(result)
-            else:
-                frunning = future.running()
-                logger.info('[x] Future running: %s ' % frunning)
-                fdone = future.done()
-                logger.info('[x] Future done: %s ' % fdone)
+            except UnboundLocalError as unbound:
+                print('Unbound: %s !!!! ' % unbound)
+                results.append('Unbound')
                 results.append(result)
-        logger.info('[x] Results returned: %s ' % results)
+                logger.info('[xe] UnboundLocalError: %s' % unbound)
+            except Exception:
+                results.append('Exception')
+                results.append(result)
+                logger.info('[xe] Exception for future: %s' % future)
+            else:
+                # frunning = future.running()
+                if future.done() is True:
+                    results.append(result)
+                    logger.info('[x] Results %s ' % results)
 
+    logger.info('[x] Results returned futures_list: %s ' % futures_list)
     return results
 
 
 # Test
 if __name__ == "__main__":
 
-    from time import sleep
+    # from time import sleep
 
     url = 'https://www.youtube.com/watch?v=4CLzzwDBvlA'   # short file
     # url = 'https://www.youtube.com/watch?v=wXaN2vXEgwg'  # medium file
     # url = 'https://www.youtube.com/watch?v=xwGJYIWhZDM'   # large file
 
-    # 0 urls
+    # 13 urls (+1 voor url)
     urls = [
         'https://www.youtube.com/watch?v=2KxJ6eTY9bA',
         'https://www.youtube.com/watch?v=qE8PG2mpo58',
@@ -90,16 +83,15 @@ if __name__ == "__main__":
     ]
 
     results = downloadx(url, urls)
-    sleep(60)
+    # sleep(60)
     print()
     logger.info('[x test] Results ..........')
+    print()
 
     for result in results:
-        print(f'Result test: {result}')
+        print('x test: %s' % result)
         logger.info('[x test]: %s' % result)
 
-    print('\n......... Test done\n')
-    print(results)
-
     logger.info('[x test] Test done\n\n')
+    print('\n......... Test done\n')
     print()
