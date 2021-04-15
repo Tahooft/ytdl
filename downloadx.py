@@ -13,7 +13,8 @@ logger = logging.getLogger(__name__)
 
 def downloadx(url, urls):
     """
-    Create a thread pool and download video's from specified urls
+    Create a thread pool and download video's from specified urls\n
+    Returns list with dict {url: Downloaded|DownloadError}
     """
 
     urls.append(url)
@@ -32,13 +33,10 @@ def downloadx(url, urls):
         for future in as_completed(futures_list):
             try:
                 result = future.result(timeout=30)
-                # print(futures_list)
-                # print('[x] Result: %s\n' % result)
-                # logger.info('[x] Result: %s ' % result)
             except TimeoutError as terror:
                 logger.error('[x] Timeout error!:\n%s' % terror)
             except UnboundLocalError as unbound:
-                print('Unbound: %s !!!! ' % unbound)
+                print('Unbound: %s ! ' % unbound)
                 results.append('Unbound')
                 results.append(result)
                 logger.info('[xe] UnboundLocalError: %s' % unbound)
@@ -52,7 +50,8 @@ def downloadx(url, urls):
                     results.append(result)
                     logger.info('[x] Results %s ' % results)
 
-    logger.info('[x] Results returned futures_list: %s ' % futures_list)
+    logger.info('[x] Final results futures_list: %s\n' % futures_list)
+    logger.info('[x] Final results: %s\n' % results)
     return results
 
 
