@@ -1,5 +1,5 @@
 import logging.config
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import yaml
 
@@ -19,25 +19,24 @@ def downloadx(url, urls):
     urls.append(url)
 
     futures_list = []
-    results = []
+    results = {}
 
     with ThreadPoolExecutor(max_workers=4) as executor:
 
         for url in urls:
             futures = executor.submit(dl.download1, dl.ydl_opts, url)
             futures_list.append(futures)
-            running = len(futures_list)
-
             logger.info('[x] Added futures: %s' % futures)
-            logger.info('[x] futures_list len: %d ' % running)
+            logger.info('[x] futures_list len: %d ' % len(futures_list))
         logger.info('[x] All futures added\n')
 
-        for future in futures_list:
+        for future in as_completed(futures_list):
             try:
                 result = future.result(timeout=20)
                 # results.append(result)
                 logger.info('[x] Result: %s ' % result)
-                print('[x] Result: %s ' % result)
+                print(futures_list)
+                print('[x] Result: %s\n' % result)
             except TimeoutError as terror:
                 logger.error('[x] Timeout error!:\n%s' % terror)
             except Exception:
@@ -46,27 +45,28 @@ def downloadx(url, urls):
                 logger.info('[xe] Future running: %s ' % frunning)
                 fdone = future.done()
                 logger.info('[xe] Future done: %s ' % fdone)
-                # excerror = future.exception()
-                # logger.error('[x] Exception for future: %s' % excerror)
-                if frunning is False:
-                    results.append(None)
-                else:
-                    results.append(result)
+                results['nope'] = None
             else:
-                frunning = future.running()
-                logger.info('[x] Future running: %s ' % frunning)
+                # frunning = future.running()
+                # url als index  (result = url/false)
                 fdone = future.done()
-                logger.info('[x] Future done: %s ' % fdone)
-                results.append(result)
-        logger.info('[x] Results returned: %s ' % results)
+                if fdone is False:
+                    results['result'] = 'not done'
+                else:
+                    results[result] = fdone
+                results[result] = fdone
+                logger.info('[x] Results %s ' % results)
 
-    return results
+    logger.info('[x] Results returned: %s ' % futures_list)
+
+    print('[x] results verzameld:\n %s' % results)
+    return futures_list
 
 
 # Test
 if __name__ == "__main__":
 
-    from time import sleep
+    # from time import sleep
 
     url = 'https://www.youtube.com/watch?v=4CLzzwDBvlA'   # short file
     # url = 'https://www.youtube.com/watch?v=wXaN2vXEgwg'  # medium file
@@ -90,16 +90,19 @@ if __name__ == "__main__":
     ]
 
     results = downloadx(url, urls)
-    sleep(60)
+    # sleep(60)
     print()
     logger.info('[x test] Results ..........')
+    print()
 
-    for result in results:
-        print(f'Result test: {result}')
-        logger.info('[x test]: %s' % result)
+    # for result in results:
+    #     line = result.items
+    #     print(f'Result test: {result.items}')
+    #     logger.info('[x test]: %s' % key, result)
 
-    print('\n......... Test done\n')
+    print('Returned results:')
     print(results)
 
     logger.info('[x test] Test done\n\n')
+    print('\n......... Test done\n')
     print()
