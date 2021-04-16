@@ -1,6 +1,5 @@
 import logging.config
-from concurrent.futures import ThreadPoolExecutor
-from queue import Queue
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import yaml
 
@@ -15,24 +14,23 @@ logger = logging.getLogger(__name__)
 def downloadx(url, urls):
     """
     Create a thread pool and download video's from specified urls\n
-    Returns list with dicts {url: Downloaded|DownloadError}
+    Returns list with dict {url: Downloaded|DownloadError}
     """
 
     urls.append(url)
 
-    q = Queue(maxsize=0)
+    futures_list = []
     results = []
 
     with ThreadPoolExecutor(max_workers=4) as executor:
 
         for url in urls:
             futures = executor.submit(dl.download1, dl.ydl_opts, url)
-            q.put(futures)
+            futures_list.append(futures)
             logger.info('[x] Added futures: %s' % futures)
         logger.info('[x] All futures added\n')
 
-        while not q.empty():
-            future = q.get()
+        for future in as_completed(futures_list):
             try:
                 result = future.result(timeout=30)
             except TimeoutError as terror:
@@ -51,7 +49,7 @@ def downloadx(url, urls):
                 if future.done() is True:
                     results.append(result)
                     logger.info('[x] Results %s ' % results)
-        # logger.info('[x] Final results q: %s\n' % q)
+        logger.info('[x] Final results futures_list: %s\n' % futures_list)
         logger.info('[x] Final results: %s\n' % results)
 
     return results

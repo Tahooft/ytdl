@@ -1,5 +1,6 @@
 import logging.config
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor
+from queue import Queue
 
 import yaml
 
@@ -13,32 +14,31 @@ logger = logging.getLogger(__name__)
 
 def downloadx(url, urls):
     """
-    Create a thread pool and download video's from specified urls
+    Create a thread pool and download video's from specified urls\n
+    Returns list with dicts {url: Downloaded|DownloadError}
     """
 
     urls.append(url)
 
-    futures_list = []
+    q = Queue(maxsize=0)
     results = []
 
     with ThreadPoolExecutor(max_workers=4) as executor:
 
         for url in urls:
             futures = executor.submit(dl.download1, dl.ydl_opts, url)
-            futures_list.append(futures)
+            q.put(futures)
             logger.info('[x] Added futures: %s' % futures)
         logger.info('[x] All futures added\n')
 
-        for future in as_completed(futures_list):
+        while not q.empty():
+            future = q.get()
             try:
                 result = future.result(timeout=30)
-                # print(futures_list)
-                # print('[x] Result: %s\n' % result)
-                # logger.info('[x] Result: %s ' % result)
             except TimeoutError as terror:
-                logger.error('[x] Timeout error!:\n%s' % terror)
+                logger.error('[x] TimeoutError:\n%s' % terror)
             except UnboundLocalError as unbound:
-                print('Unbound: %s !!!! ' % unbound)
+                print('Unbound: %s ! ' % unbound)
                 results.append('Unbound')
                 results.append(result)
                 logger.info('[xe] UnboundLocalError: %s' % unbound)
@@ -51,8 +51,9 @@ def downloadx(url, urls):
                 if future.done() is True:
                     results.append(result)
                     logger.info('[x] Results %s ' % results)
+        # logger.info('[x] Final results q: %s\n' % q)
+        logger.info('[x] Final results: %s\n' % results)
 
-    logger.info('[x] Results returned futures_list: %s ' % futures_list)
     return results
 
 
