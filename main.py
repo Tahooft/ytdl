@@ -1,5 +1,6 @@
 import logging.config
 import time
+from queue import Queue
 
 import pyperclip as clipboard
 import yaml
@@ -16,7 +17,7 @@ logger = logging.getLogger(__name__)
 def main():
     latest = 'go'
     clipboard.copy('go')
-    urls = []
+    urls = Queue(maxsize=0)
 
     while clipboard.paste() != 'Stop':
 
@@ -27,6 +28,7 @@ def main():
 
             if isValidURL(latest):
                 logger.info('Valid url')
+                urls.put(latest)
                 dx.downloadx(latest, urls)
             else:
                 logger.info('Not a valid url')

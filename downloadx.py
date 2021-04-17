@@ -12,20 +12,19 @@ logging.config.dictConfig(config)
 logger = logging.getLogger(__name__)
 
 
-def downloadx(url, urls):
+def downloadx(urls):
     """
     Create a thread pool and download video's from specified urls\n
     Returns list with dicts {url: Downloaded|DownloadError}
     """
-
-    urls.append(url)
 
     q = Queue(maxsize=0)
     results = []
 
     with ThreadPoolExecutor(max_workers=4) as executor:
 
-        for url in urls:
+        while not urls.empty():
+            url = urls.get()
             futures = executor.submit(dl.download1, dl.ydl_opts, url)
             q.put(futures)
             logger.info('[x] Added futures: %s' % futures)
@@ -60,14 +59,16 @@ def downloadx(url, urls):
 # Test
 if __name__ == "__main__":
 
+    urls = Queue(maxsize=0)
+
     # from time import sleep
 
-    url = 'https://www.youtube.com/watch?v=4CLzzwDBvlA'   # short file
+    # url = 'https://www.youtube.com/watch?v=4CLzzwDBvlA'   # short file
     # url = 'https://www.youtube.com/watch?v=wXaN2vXEgwg'  # medium file
     # url = 'https://www.youtube.com/watch?v=xwGJYIWhZDM'   # large file
 
     # 13 urls (+1 voor url)
-    urls = [
+    test_urls = [
         'https://www.youtube.com/watch?v=2KxJ6eTY9bA',
         'https://www.youtube.com/watch?v=qE8PG2mpo58',
         'https://www.youtube.com/watch?v=v2r2riGruPM',
@@ -83,7 +84,10 @@ if __name__ == "__main__":
         'https://www.youtube.com/watch?v=d0FV3_i-6WU+',
     ]
 
-    results = downloadx(url, urls)
+    for url in test_urls:
+        urls.put(url)
+
+    results = downloadx(urls)
     # sleep(60)
     print()
     logger.info('[x test] Results ..........')
