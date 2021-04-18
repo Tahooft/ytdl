@@ -1,39 +1,45 @@
+collections.namedtuple ipv dic
+if else -> often better try else
+
+
+
+# Velden ooit...
 my_hook
     status
         filename
-        downloading    
+        downloading
         percent_done
         est_time_left
-        finished  
+        finished
         error
-        
+
 download1
-    result 
+    result
         Started download (? betrouwbaar ?)
         error
-    
+
 downloadx
     urls (for loop)
-        url 
+        url
         futures (object)
 
-        
+
     futures_list (for loop)
         future
             result
-                
+
                 None (? exception hoe ?)
-        
-        
+
+
     results
         result
             url (return van download1 is var url + msg)
                 Started download1 url
                 Youtube_dl DownloadError at url
-            
+
             Future running
             Future done
-            
+
 url  [status][6]  url
 
-    
+

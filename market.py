@@ -1,11 +1,11 @@
 import logging.config
 import time
+from queue import Queue
 
 import pyperclip as clipboard
 import yaml
-from concurrent.futures import ThreadPoolExecutor
-from queue import Queue
-import downloadx as dx
+
+from klad import DownloadX as dx
 from regulars import isValidURL
 
 with open('./log.yaml', 'r') as stream:
@@ -17,7 +17,8 @@ logger = logging.getLogger(__name__)
 def main():
     latest = 'go'
     clipboard.copy('go')
-    urls = []
+    urls = Queue(maxsize=0)
+    downloader = dx(urls)
 
     while clipboard.paste() != 'Stop':
 
@@ -28,13 +29,9 @@ def main():
 
             if isValidURL(latest):
                 logger.info('Valid url')
-                dx.downloadx(latest, urls)
+                downloader.url_put(latest)
+                downloader.run()
             else:
                 logger.info('Not a valid url')
 
         time.sleep(5)
-
-
-# Test
-if __name__ == "__main__":
-    main()
