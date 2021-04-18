@@ -31,7 +31,7 @@ class ProducerThread(Thread):
 
                 if isValidURL(latest):
                     queue.put(latest)
-                    print('Produced: %s' % latest)
+                    print('Produced: %s\n' % latest)
 
             time.sleep(5)
         queue.join
@@ -49,12 +49,13 @@ class ConsumerThread(Thread):
 
         while True:
             url = queue.get()
-            print('Consumed: %s' % url)
+            print('Consumed: %s\n' % url)
             result = dl.download1(dl.ydl_opts, url)
             # results.append(result)
             queue.task_done
             print('Done: %s' % url)
             print('Result: %s' % result)
+            print('Queue: %s' % queue)
 
 
 # Test
