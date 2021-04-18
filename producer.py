@@ -24,7 +24,7 @@ class ProducerThread(Thread):
         latest = 'go'
         clipboard.copy('go')
 
-        while clipboard.paste() != 'Stop':
+        while clipboard.paste() != ' ':
 
             if clipboard.paste() != latest:
                 latest = clipboard.paste()
@@ -34,28 +34,36 @@ class ProducerThread(Thread):
                     print('Produced: %s\n' % latest)
 
             time.sleep(5)
-        queue.join
+        print('Trying to stop...')
+        queue.put('Stop')
+        print('Producer stopped')
 
 
 class ConsumerThread(Thread):
     """
-    Create a thread pool and download video's from specified urls\n
     Returns list with dicts {url: Downloaded|DownloadError}
     """
 
     def run(self):
 
         global queue
+        results = Queue(maxsize=0)
 
         while True:
             url = queue.get()
-            print('Consumed: %s\n' % url)
-            result = dl.download1(dl.ydl_opts, url)
-            # results.append(result)
-            queue.task_done
-            print('Done: %s' % url)
-            print('Result: %s' % result)
-            print('Queue: %s' % queue)
+            if url != 'Stop':
+                print('Consumed: %s\n' % url)
+                result = dl.download1(dl.ydl_opts, url)
+                results.put(result)
+                queue.task_done
+                print('Done: %s' % url)
+                print('Result: %s' % result)
+                print('results: %s' % len(results))
+            else:
+                break
+        print('Consumer stopping...')
+        queue.join
+        print('Consumer stopped')
 
 
 # Test
