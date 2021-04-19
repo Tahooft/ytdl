@@ -54,7 +54,7 @@ class ConsumerThread(Thread):
             url = queue.get()
             if url != SENTINEL:
                 logger.info('Consumed: %s\n' % url)
-                result = dl.download1(dl.ydl_opts, url)
+                result = dl.download1(url)
                 results.put(result)
                 queue.task_done
 

@@ -55,22 +55,22 @@ def my_hook(d):
     return feedback
 
 
-ydl_opts = {
-    'simulate': False,
-    'quiet': False,
-    'verbose': False,
-    'no_warnings': False,
-    'format': 'bestvideo+bestaudio/best',
-    'outtmpl': '~/Downloads/%(title)s.%(ext)s',
-    'logger': logger,
-    'progress_hooks': [my_hook],
-}
-
-
-def download1(ydl_opts, url):
+def download1(url):
     """ Downloads a video from url\n
         Returns: {url: downloadresult}
     """
+
+    ydl_opts = {
+        'simulate': False,
+        'quiet': False,
+        'verbose': False,
+        'no_warnings': False,
+        'format': 'bestvideo+bestaudio/best',
+        'outtmpl': '~/Downloads/%(title)s.%(ext)s',
+        'logger': logger,
+        'progress_hooks': [my_hook],
+    }
+
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         try:
             ydl.download([url])
@@ -96,7 +96,7 @@ if __name__ == "__main__":
     # url = 'https://www.youtube.com/watch?v=nTasT5h0LEg'   # Error test
     url = 'https://www.youtube.com/watch?v=d0FV3_i-6WU+'
 
-    result = download1(ydl_opts, url)
+    result = download1(url)
 
     logger.info('[d1 test] End of test')
     print('Done: %s\n' % result)

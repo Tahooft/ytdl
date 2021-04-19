@@ -1,3 +1,4 @@
+import regulars
 
 
 def test_valid_input():
@@ -6,6 +7,3 @@ def test_valid_input():
 
 def test_invalid_input():
     assert regulars.isValidURL('Not an url') is False
-
-
-pass
