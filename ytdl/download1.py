@@ -79,7 +79,7 @@ def download1(url):
             logger.error('[d1] DownloadError: %s' % url)
             logger.error(e)
         except Exception as e:
-            result = {url: 'Exception'}
+            result = {url: 'DownloadError'}
             logger.error('[d1] Exception: %s' % e)
         else:
             result = {url: 'Downloaded'}
@@ -93,10 +93,10 @@ if __name__ == "__main__":
 
     # url = 'https://www.youtube.com/watch?v=xwGJYIWhZDM'   # Large file
     # url = 'https://www.youtube.com/watch?v=qVpWpfD27mM'
-    # url = 'https://www.youtube.com/watch?v=nTasT5h0LEg'   # Error test
-    url = 'https://www.youtube.com/watch?v=d0FV3_i-6WU+'
+    url = 'https://www.youtube.com/watch?v=nTasT5h0LEg'   # Error test
+    # url = 'https://www.youtube.com/watch?v=d0FV3_i-6WU+'
 
-    result = download1(url)
+    result = download1()
 
     logger.info('[d1 test] End of test')
     print('Done: %s\n' % result)
