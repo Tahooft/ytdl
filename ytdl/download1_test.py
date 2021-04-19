@@ -27,6 +27,6 @@ def test_download_typeerror():
 
 
 def test_download_empty():
-    """ This one should give a result not the exception """
+    """ breaks...  catch error and raise own exception oid ? """
     result = dl.download1()
     assert result == 'error of zo'

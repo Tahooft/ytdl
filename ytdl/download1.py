@@ -96,7 +96,7 @@ if __name__ == "__main__":
     url = 'https://www.youtube.com/watch?v=nTasT5h0LEg'   # Error test
     # url = 'https://www.youtube.com/watch?v=d0FV3_i-6WU+'
 
-    result = download1()
+    result = download1(url)
 
     logger.info('[d1 test] End of test')
     print('Done: %s\n' % result)
