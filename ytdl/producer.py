@@ -6,7 +6,6 @@ from threading import Thread
 import pyperclip as clipboard
 import yaml
 
-import download1 as dl
 from regulars import isValidURL
 
 with open('./log.yaml', 'r') as stream:
@@ -40,39 +39,39 @@ class ProducerThread(Thread):
         logger.info('Producer stopped')
 
 
-class ConsumerThread(Thread):
-    """
-    Returns list with dicts {url: Downloaded|DownloadError}
-    """
+# class ConsumerThread(Thread):
+#     """
+#     Returns list with dicts {url: Downloaded|DownloadError}
+#     """
 
-    def run(self):
+#     def run(self):
 
-        global queue
-        results = Queue(maxsize=0)
+#         global queue
+#         results = Queue(maxsize=0)
 
-        while True:
-            url = queue.get()
-            if url != SENTINEL:
-                logger.info('Consumed: %s\n' % url)
-                result = dl.download1(url)
-                results.put(result)
-                queue.task_done
+#         while True:
+#             url = queue.get()
+#             if url != SENTINEL:
+#                 logger.info('Consumed: %s\n' % url)
+#                 result = dl.download1(url)
+#                 results.put(result)
+#                 queue.task_done
 
-                logger.info('Done: %s' % url)
-                logger.info('Result: %s' % result)
-                logger.info('results: %s' % results.qsize())
-            else:
-                break
-        logger.info('Consumer stopping...')
-        queue.join
-        logger.info('Consumer stopped\n\n')
+#                 logger.info('Done: %s' % url)
+#                 logger.info('Result: %s' % result)
+#                 logger.info('results: %s' % results.qsize())
+#             else:
+#                 break
+#         logger.info('Consumer stopping...')
+#         queue.join
+#         logger.info('Consumer stopped\n\n')
 
 
 # Test
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-    ProducerThread().start()
-    ConsumerThread().start()
+    # ProducerThread().start()
+    # ConsumerThread().start()
 
 # https://www.youtube.com/watch?v=qE8PG2mpo58
 # https://www.youtube.com/watch?v=v2r2riGruPM
