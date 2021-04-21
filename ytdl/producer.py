@@ -35,6 +35,7 @@ class ProducerThread(Thread):
                     logger.info('Produced: %s\n' % latest)
 
             time.sleep(5)
+
         logger.info('Trying to stop...')
-        queue.put(SENTINEL)
+        queue.join()
         logger.info('Producer stopped')
