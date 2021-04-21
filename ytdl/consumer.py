@@ -41,3 +41,5 @@ class ConsumerThread(Thread):
         logger.info('Results: %s' % results)
         queue.join
         logger.info('Consumer stopped\n\n')
+        print('Consumer stopped')
+        

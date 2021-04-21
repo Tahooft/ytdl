@@ -19,18 +19,23 @@ from consumer import ConsumerThread, queue, SENTINEL
 # ]
 
 short_list = [
-
-    'https://www.youtube.com/watch?v=d0FV3_i-6WU+',
-    'https://www.youtube.com/watch?v=2KxJ6eTY9bA',
     SENTINEL
 ]
 
-print(queue.qsize)
-print(SENTINEL)
-for url in short_list:
-    queue.put(url)
 
-print(queue.qsize())
+def test_consumer_success():
+    for url in short_list:
+        queue.put(url)
+        result = ConsumerThread().start()
+    assert result is None
 
-result = ConsumerThread().start()
-print(result)
+
+# print(queue.qsize)
+# print(SENTINEL)
+# for url in short_list:
+#     queue.put(url)
+
+# print(queue.qsize())
+
+# result = ConsumerThread().start()
+# print(result)
