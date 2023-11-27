@@ -1,0 +1,4 @@
+python class that takes an url as parameter and then start yt-dlp to download the file stated in that url.
+i want to be able to set all the options for yt-dlp.
+i want to keep track of the progress of the download 
+if the download has succeeded it returns the url otherwise the boolean FALSE

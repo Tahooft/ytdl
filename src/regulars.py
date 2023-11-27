@@ -2,6 +2,7 @@ import re
 import logging.config
 import yaml
 
+
 with open('./log.yaml', 'r') as stream:
     config = yaml.load(stream, Loader=yaml.FullLoader)
 logging.config.dictConfig(config)
@@ -36,7 +37,7 @@ if __name__ == "__main__":
 
     url = "https://www.geeksforgeeks.org"
 
-    if(isValidURL(url) is True):
+    if (isValidURL(url) is True):
         logger.warning('Yes')
     else:
         logger.info('no')
