@@ -94,7 +94,8 @@ if __name__ == "__main__":
     # url = 'https://www.youtube.com/watch?v=xwGJYIWhZDM'   # Large file
     # url = 'https://www.youtube.com/watch?v=qVpWpfD27mM'
     # url = 'https://www.youtube.com/watch?v=nTasT5h0LEg'   # Error test
-    url = 'https://www.youtube.com/watch?v=d0FV3_i-6WU+'
+    # url = 'https://www.youtube.com/watch?v=d0FV3_i-6WU+'
+    url = 'https://xhamster.com/videos/just-fuck-my-pussy-without-further-ado-i-m-all-yours-qesas-qesastop-xhTJjhv'
 
     result = download1(ydl_opts, url)
 

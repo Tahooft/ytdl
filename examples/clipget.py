@@ -24,6 +24,7 @@ def clipget():
             result = 'Not a valid url'
     return result
 
+
 # Test
 if __name__ == "__main__":
 
@@ -32,8 +33,8 @@ if __name__ == "__main__":
     print('Done: %s \n ' % result)
 
 
-# https://www.youtube.com/watch?v=DJdqMs6OUyI&list=TLPQMjIxMTIwMjOWwvRVfIDwuQ&index=2
-# .waitForNewPaste()
+# sample url: https://www.youtube.com/watch?v=DJdqMs6OUyI&list=TLPQMjIxMTIwMjOWwvRVfIDwuQ&index=2
+# waitForNewPaste()
 #     if clipboard.paste() != 'Stop':
 
 # pyperclip.copy()  to fill the clipboard
